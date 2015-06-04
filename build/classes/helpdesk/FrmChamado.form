@@ -63,27 +63,29 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblCodigo" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtCodigo" min="-2" pref="73" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="lblProblema" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
-                              <Component id="cmbProblema" min="-2" pref="209" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblProblema" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblPrioridade" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="cmbProblema" alignment="0" min="-2" pref="209" max="-2" attributes="0"/>
+                                  <Component id="cmbPrioridade" alignment="0" min="-2" pref="209" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="lblPrioridade" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                              <Component id="cmbPrioridade" min="-2" pref="209" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="lblDescricao" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="485" max="-2" attributes="0"/>
-                          <Component id="lblDataAbertura" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="txtDataAbertura" min="-2" pref="130" max="-2" attributes="0"/>
                               <EmptySpace min="290" pref="290" max="-2" attributes="0"/>
                               <Component id="btnGravarChamado" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="lblDataAbertura" min="-2" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="485" max="-2" attributes="0"/>
+                          <Component id="lblDescricao" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCodigo" min="-2" pref="73" max="-2" attributes="0"/>
+                          <Component id="lblCodigo" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

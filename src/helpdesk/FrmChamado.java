@@ -403,23 +403,24 @@ public class FrmChamado extends javax.swing.JDialog {
                 .addGroup(painelAbreChmLayout.createSequentialGroup()
                     .addGap(10, 10, 10)
                     .addGroup(painelAbreChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblCodigo)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(painelAbreChmLayout.createSequentialGroup()
-                            .addComponent(lblProblema)
-                            .addGap(8, 8, 8)
-                            .addComponent(cmbProblema, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(painelAbreChmLayout.createSequentialGroup()
-                            .addComponent(lblPrioridade)
+                            .addGroup(painelAbreChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblProblema)
+                                .addComponent(lblPrioridade))
                             .addGap(4, 4, 4)
-                            .addComponent(cmbPrioridade, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(lblDescricao)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblDataAbertura)
+                            .addGroup(painelAbreChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cmbProblema, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cmbPrioridade, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(painelAbreChmLayout.createSequentialGroup()
                             .addComponent(txtDataAbertura, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(290, 290, 290)
-                            .addComponent(btnGravarChamado))))
+                            .addComponent(btnGravarChamado))
+                        .addComponent(lblDataAbertura)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblDescricao)
+                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblCodigo))
+                    .addGap(97, 97, 97))
             );
             painelAbreChmLayout.setVerticalGroup(
                 painelAbreChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -613,7 +614,7 @@ public class FrmChamado extends javax.swing.JDialog {
                 .addGroup(painelFechaChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnFecharChamado))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout painelAlteraEquipLayout = new javax.swing.GroupLayout(painelAlteraEquip);
@@ -641,7 +642,7 @@ public class FrmChamado extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabChamado, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+            .addComponent(tabChamado, javax.swing.GroupLayout.PREFERRED_SIZE, 550, Short.MAX_VALUE)
         );
 
         pack();
