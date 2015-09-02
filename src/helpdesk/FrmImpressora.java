@@ -142,7 +142,7 @@ public class FrmImpressora extends javax.swing.JDialog {
                     impressora.setModelo(txtModelo.getText());  
                     impressora.setPatrimonio(txtPatrimonio.getText().toString());
                     impressora.setModo(rbRede.isSelected()?1:2);
-                    impressora.setCompartilhada(rbCompartilhada.isSelected()?1:1);                    
+                    impressora.setCompartilhada(rbCompartilhada.isSelected()?1:2);                    
                     impressora.setMarca(Long.valueOf(String.valueOf(cmbMarca.getSelectedItem().toString().subSequence(0, cmbMarca.getSelectedItem().toString().indexOf("-")))));                    
                     impressora.setSetor(Long.valueOf(String.valueOf(cmbSetor.getSelectedItem().toString().subSequence(0, cmbSetor.getSelectedItem().toString().indexOf("-")))));                    
                     impressora.setIp(txtIP.getText().toString());                                        
