@@ -39,7 +39,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent ae) {
                     FrmFornecedor f= new FrmFornecedor(new Frame(), true);
-                    f.setLocation(500,250);
+                    f.setLocation(300,100);
                     f.show();
                 }
             });
@@ -48,7 +48,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent ae) {
                     FrmMarca f= new FrmMarca(new Frame(), true);
-                    f.setLocation(500,250);
+                    f.setLocation(300,100);
                     f.show();
                 }
             });
@@ -57,7 +57,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent ae) {
                     FrmProblema f= new FrmProblema(new Frame(), true);
-                    f.setLocation(500,250);
+                    f.setLocation(300,100);
                     f.show();
                 }
             });
@@ -66,7 +66,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent ae) {
                     FrmSetor f= new FrmSetor(new Frame(), true);
-                    f.setLocation(500,250);
+                    f.setLocation(300,100);
                     f.show();
                 }
             });
@@ -75,7 +75,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent ae) {
                     FrmSistemaOP f= new FrmSistemaOP(new Frame(), true);
-                    f.setLocation(500,250);
+                    f.setLocation(300,100);
                     f.show();
                 }
             });
@@ -93,7 +93,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent ae) {
                     FrmEquipamento f= new FrmEquipamento(new Frame(), true);
-                    f.setLocation(500,250);
+                    f.setLocation(300,100);
                     f.show();
                 }
             });
@@ -102,7 +102,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent ae) {
                     FrmOffice f= new FrmOffice(new Frame(), true);
-                    f.setLocation(500,250);
+                    f.setLocation(300,100);
                     f.show();
                 }
             });
