@@ -30,10 +30,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="tabCadUser" min="-2" pref="275" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="tabCadUser" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -59,144 +56,199 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="btnGravarUser" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblNomeUser" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCodigo" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblSenha" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblNomeCompleto" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblSetor" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtNomeUser" max="32767" attributes="0"/>
-                          <Component id="txtSenhaUser" max="32767" attributes="0"/>
-                          <Component id="txtNomeCompleto" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="txtCodigo" min="-2" pref="73" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="cmbSetor" pref="180" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                              <Component id="lblPerfil" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="cmbPerfil" min="-2" pref="147" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="jPanelCadUser" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblNomeUser" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtNomeUser" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblSenha" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtSenhaUser" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblNomeCompleto" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtNomeCompleto" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cmbSetor" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmbPerfil" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblSetor" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPerfil" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace pref="16" max="32767" attributes="0"/>
-                      <Component id="btnGravarUser" min="-2" max="-2" attributes="0"/>
+                      <Component id="jPanelCadUser" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblCodigo">
+            <Container class="javax.swing.JPanel" name="jPanelCadUser">
               <Properties>
-                <Property name="text" type="java.lang.String" value="C&#xf3;digo"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtCodigo">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="1"/>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblNomeUser">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Nome de Usu&#xe1;rio:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtNomeUser">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblSenha">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Senha:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtSenhaUser">
-            </Component>
-            <Component class="javax.swing.JButton" name="btnGravarUser">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Gravar"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblNomeCompleto">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Nome Completo:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtNomeCompleto">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblSetor">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Setor:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="cmbSetor">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="c0" green="c0" id="lightGray" palette="1" red="c0" type="palette"/>
                 </Property>
-                <Property name="selectedItem" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="&quot;&quot;" type="code"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Dados do usu&#xe1;rio"/>
+                  </Border>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[330, 218]"/>
                 </Property>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblPerfil">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Perfil:"/>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="cmbPerfil">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
-                </Property>
-              </Properties>
-            </Component>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lblCodigo" max="32767" attributes="0"/>
+                                  <EmptySpace min="48" pref="48" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="lblNomeUser" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lblSenha" max="32767" attributes="0"/>
+                                  <EmptySpace min="51" pref="51" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lblNomeCompleto" max="32767" attributes="0"/>
+                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lblSetor" max="32767" attributes="0"/>
+                                  <EmptySpace min="55" pref="55" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lblPerfil" max="32767" attributes="0"/>
+                                  <EmptySpace min="57" pref="57" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
+                                  <Component id="btnGravarUser" pref="69" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="cmbPerfil" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="txtCodigo" max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="cmbSetor" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="txtNomeCompleto" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="txtSenhaUser" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="txtNomeUser" alignment="1" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblNomeUser" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNomeUser" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblSenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtSenhaUser" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblNomeCompleto" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNomeCompleto" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cmbSetor" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblSetor" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblPerfil" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbPerfil" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="11" max="32767" attributes="0"/>
+                          <Component id="btnGravarUser" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="lblCodigo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="C&#xf3;digo:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtCodigo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="1"/>
+                    <Property name="enabled" type="boolean" value="false"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblNomeUser">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nome de Usu&#xe1;rio:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtNomeUser">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblSenha">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Senha:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtSenhaUser">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblNomeCompleto">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nome Completo:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtNomeCompleto">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblSetor">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Setor:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cmbSetor">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                    <Property name="selectedItem" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="&quot;&quot;" type="code"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPerfil">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Perfil:"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cmbPerfil">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnGravarUser">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Gravar"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="painelAlteraUser">
@@ -216,158 +268,188 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnGravarUserAlt" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="lblSetorAlt" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                              <Component id="cmbSetorAlt" pref="260" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                              <Component id="lblPerfilAlt" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="cmbPerfilAlt" min="-2" pref="147" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblNomeUserAlt" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblCodigoAlt" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblSenhaAlt" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblNomeCompAlt" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtNomeCompAlt" max="32767" attributes="0"/>
-                                  <Component id="txtNomeUserAlt" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="txtCodigoAlt" min="-2" pref="73" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="315" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Component id="txtSenhaUserAlt" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblCodigoAlt" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtCodigoAlt" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblNomeUserAlt" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtNomeUserAlt" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblSenhaAlt" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtSenhaUserAlt" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtNomeCompAlt" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblNomeCompAlt" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cmbSetorAlt" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmbPerfilAlt" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblSetorAlt" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPerfilAlt" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace pref="12" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnGravarUserAlt" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblCodigoAlt">
+            <Container class="javax.swing.JPanel" name="jPanel1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="C&#xf3;digo"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtCodigoAlt">
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtNomeUserAlt">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new AutoCompleteTextField(5,false,listaDeUsuarios)"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblNomeUserAlt">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Nome de Usu&#xe1;rio"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblSenhaAlt">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Senha:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtSenhaUserAlt">
-            </Component>
-            <Component class="javax.swing.JButton" name="btnGravarUserAlt">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Gravar"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnCancelar">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Cancelar"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtNomeCompAlt">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblNomeCompAlt">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Nome Completo:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblSetorAlt">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Setor:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="cmbSetorAlt">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
                 </Property>
-                <Property name="selectedItem" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="&quot;&quot;" type="code"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Dados do usu&#xe1;rio"/>
+                  </Border>
                 </Property>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblPerfilAlt">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Perfil:"/>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="cmbPerfilAlt">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
-                </Property>
-              </Properties>
-            </Component>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblCodigoAlt" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblNomeUserAlt" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblSenhaAlt" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblNomeCompAlt" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblSetorAlt" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cmbSetorAlt" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtNomeCompAlt" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtSenhaUserAlt" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtNomeUserAlt" alignment="1" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="70" max="32767" attributes="0"/>
+                                  <Component id="btnGravarUserAlt" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="txtCodigoAlt" min="-2" pref="73" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="cmbPerfilAlt" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                          <Component id="lblPerfilAlt" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblCodigoAlt" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtCodigoAlt" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblNomeUserAlt" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNomeUserAlt" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblSenhaAlt" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtSenhaUserAlt" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtNomeCompAlt" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblNomeCompAlt" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cmbSetorAlt" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblSetorAlt" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblPerfilAlt" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbPerfilAlt" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnGravarUserAlt" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JTextField" name="txtCodigoAlt">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblCodigoAlt">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="C&#xf3;digo:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtNomeUserAlt">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new AutoCompleteTextField(5,false,listaDeUsuarios)"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblNomeUserAlt">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nome de usu&#xe1;rio:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblSenhaAlt">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Senha:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtSenhaUserAlt">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblNomeCompAlt">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nome Completo:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtNomeCompAlt">
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cmbSetorAlt">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                    <Property name="selectedItem" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="&quot;&quot;" type="code"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblSetorAlt">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Setor:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPerfilAlt">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Perfil:"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cmbPerfilAlt">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnCancelar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cancelar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnGravarUserAlt">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Gravar"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
       </SubComponents>

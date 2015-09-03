@@ -235,34 +235,36 @@ public class FrmUsuarios extends javax.swing.JDialog {
 
         tabCadUser = new javax.swing.JTabbedPane();
         painelCadUser = new javax.swing.JPanel();
+        jPanelCadUser = new javax.swing.JPanel();
         lblCodigo = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
         lblNomeUser = new javax.swing.JLabel();
         txtNomeUser = new javax.swing.JTextField();
         lblSenha = new javax.swing.JLabel();
         txtSenhaUser = new javax.swing.JTextField();
-        btnGravarUser = new javax.swing.JButton();
         lblNomeCompleto = new javax.swing.JLabel();
         txtNomeCompleto = new javax.swing.JTextField();
         lblSetor = new javax.swing.JLabel();
         cmbSetor = new javax.swing.JComboBox();
         lblPerfil = new javax.swing.JLabel();
         cmbPerfil = new javax.swing.JComboBox();
+        btnGravarUser = new javax.swing.JButton();
         painelAlteraUser = new javax.swing.JPanel();
-        lblCodigoAlt = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         txtCodigoAlt = new javax.swing.JTextField();
+        lblCodigoAlt = new javax.swing.JLabel();
         txtNomeUserAlt = new AutoCompleteTextField(5,false,listaDeUsuarios);
         lblNomeUserAlt = new javax.swing.JLabel();
         lblSenhaAlt = new javax.swing.JLabel();
         txtSenhaUserAlt = new javax.swing.JTextField();
-        btnGravarUserAlt = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
-        txtNomeCompAlt = new javax.swing.JTextField();
         lblNomeCompAlt = new javax.swing.JLabel();
-        lblSetorAlt = new javax.swing.JLabel();
+        txtNomeCompAlt = new javax.swing.JTextField();
         cmbSetorAlt = new javax.swing.JComboBox();
+        lblSetorAlt = new javax.swing.JLabel();
         lblPerfilAlt = new javax.swing.JLabel();
         cmbPerfilAlt = new javax.swing.JComboBox();
+        btnCancelar = new javax.swing.JButton();
+        btnGravarUserAlt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Usuários");
@@ -270,7 +272,11 @@ public class FrmUsuarios extends javax.swing.JDialog {
 
         painelCadUser.setBackground(java.awt.Color.lightGray);
 
-        lblCodigo.setText("Código");
+        jPanelCadUser.setBackground(java.awt.Color.lightGray);
+        jPanelCadUser.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do usuário"));
+        jPanelCadUser.setPreferredSize(new java.awt.Dimension(330, 218));
+
+        lblCodigo.setText("Código:");
 
         txtCodigo.setText("1");
         txtCodigo.setEnabled(false);
@@ -278,8 +284,6 @@ public class FrmUsuarios extends javax.swing.JDialog {
         lblNomeUser.setText("Nome de Usuário:");
 
         lblSenha.setText("Senha:");
-
-        btnGravarUser.setText("Gravar");
 
         lblNomeCompleto.setText("Nome Completo:");
 
@@ -290,156 +294,203 @@ public class FrmUsuarios extends javax.swing.JDialog {
         lblPerfil.setText("Perfil:");
         lblPerfil.setToolTipText("");
 
+        btnGravarUser.setText("Gravar");
+
+        javax.swing.GroupLayout jPanelCadUserLayout = new javax.swing.GroupLayout(jPanelCadUser);
+        jPanelCadUser.setLayout(jPanelCadUserLayout);
+        jPanelCadUserLayout.setHorizontalGroup(
+            jPanelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCadUserLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelCadUserLayout.createSequentialGroup()
+                        .addComponent(lblCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(48, 48, 48))
+                    .addComponent(lblNomeUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelCadUserLayout.createSequentialGroup()
+                        .addComponent(lblSenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(51, 51, 51))
+                    .addGroup(jPanelCadUserLayout.createSequentialGroup()
+                        .addComponent(lblNomeCompleto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(6, 6, 6))
+                    .addGroup(jPanelCadUserLayout.createSequentialGroup()
+                        .addComponent(lblSetor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(55, 55, 55))
+                    .addGroup(jPanelCadUserLayout.createSequentialGroup()
+                        .addComponent(lblPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(57, 57, 57)))
+                .addGroup(jPanelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelCadUserLayout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(btnGravarUser, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                        .addGap(20, 20, 20))
+                    .addGroup(jPanelCadUserLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbPerfil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCadUserLayout.createSequentialGroup()
+                                .addComponent(txtCodigo)
+                                .addGap(138, 138, 138))
+                            .addComponent(cmbSetor, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtNomeCompleto, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtSenhaUser, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtNomeUser, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addContainerGap())))
+        );
+        jPanelCadUserLayout.setVerticalGroup(
+            jPanelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCadUserLayout.createSequentialGroup()
+                .addGroup(jPanelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCodigo)
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNomeUser)
+                    .addComponent(txtNomeUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSenha)
+                    .addComponent(txtSenhaUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNomeCompleto)
+                    .addComponent(txtNomeCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbSetor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSetor))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPerfil)
+                    .addComponent(cmbPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(btnGravarUser)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout painelCadUserLayout = new javax.swing.GroupLayout(painelCadUser);
         painelCadUser.setLayout(painelCadUserLayout);
         painelCadUserLayout.setHorizontalGroup(
             painelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelCadUserLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnGravarUser))
             .addGroup(painelCadUserLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNomeUser)
-                    .addComponent(lblCodigo)
-                    .addComponent(lblSenha)
-                    .addComponent(lblNomeCompleto)
-                    .addComponent(lblSetor))
-                .addGap(3, 3, 3)
-                .addGroup(painelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNomeUser)
-                    .addComponent(txtSenhaUser)
-                    .addComponent(txtNomeCompleto)
-                    .addGroup(painelCadUserLayout.createSequentialGroup()
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(painelCadUserLayout.createSequentialGroup()
-                        .addComponent(cmbSetor, 0, 180, Short.MAX_VALUE)
-                        .addGap(4, 4, 4)
-                        .addComponent(lblPerfil)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jPanelCadUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         painelCadUserLayout.setVerticalGroup(
             painelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelCadUserLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(painelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCodigo)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNomeUser)
-                    .addComponent(txtNomeUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSenha)
-                    .addComponent(txtSenhaUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNomeCompleto)
-                    .addComponent(txtNomeCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(painelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmbSetor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbPerfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(painelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblSetor)
-                        .addComponent(lblPerfil)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addComponent(btnGravarUser))
+                .addContainerGap()
+                .addComponent(jPanelCadUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabCadUser.addTab("Cadastro", painelCadUser);
 
         painelAlteraUser.setBackground(java.awt.Color.gray);
 
-        lblCodigoAlt.setText("Código");
+        jPanel1.setBackground(java.awt.Color.gray);
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do usuário"));
 
-        lblNomeUserAlt.setText("Nome de Usuário");
+        lblCodigoAlt.setText("Código:");
+
+        lblNomeUserAlt.setText("Nome de usuário:");
 
         lblSenhaAlt.setText("Senha:");
 
-        btnGravarUserAlt.setText("Gravar");
-
-        btnCancelar.setText("Cancelar");
-
         lblNomeCompAlt.setText("Nome Completo:");
-
-        lblSetorAlt.setText("Setor:");
 
         cmbSetorAlt.setSelectedItem("");
 
+        lblSetorAlt.setText("Setor:");
+
         lblPerfilAlt.setText("Perfil:");
         lblPerfilAlt.setToolTipText("");
+
+        btnCancelar.setText("Cancelar");
+
+        btnGravarUserAlt.setText("Gravar");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCodigoAlt)
+                    .addComponent(lblNomeUserAlt)
+                    .addComponent(lblSenhaAlt)
+                    .addComponent(lblNomeCompAlt)
+                    .addComponent(lblSetorAlt))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbSetorAlt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtNomeCompAlt)
+                    .addComponent(txtSenhaUserAlt)
+                    .addComponent(txtNomeUserAlt, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnCancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                        .addComponent(btnGravarUserAlt))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtCodigoAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(cmbPerfilAlt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lblPerfilAlt)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCodigoAlt)
+                    .addComponent(txtCodigoAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNomeUserAlt)
+                    .addComponent(txtNomeUserAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSenhaAlt)
+                    .addComponent(txtSenhaUserAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNomeCompAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNomeCompAlt))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbSetorAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSetorAlt))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPerfilAlt)
+                    .addComponent(cmbPerfilAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGravarUserAlt)
+                    .addComponent(btnCancelar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout painelAlteraUserLayout = new javax.swing.GroupLayout(painelAlteraUser);
         painelAlteraUser.setLayout(painelAlteraUserLayout);
         painelAlteraUserLayout.setHorizontalGroup(
             painelAlteraUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAlteraUserLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnCancelar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnGravarUserAlt))
             .addGroup(painelAlteraUserLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelAlteraUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelAlteraUserLayout.createSequentialGroup()
-                        .addComponent(lblSetorAlt)
-                        .addGap(3, 3, 3)
-                        .addComponent(cmbSetorAlt, 0, 260, Short.MAX_VALUE)
-                        .addGap(4, 4, 4)
-                        .addComponent(lblPerfilAlt)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbPerfilAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(painelAlteraUserLayout.createSequentialGroup()
-                        .addGroup(painelAlteraUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNomeUserAlt)
-                            .addComponent(lblCodigoAlt)
-                            .addComponent(lblSenhaAlt)
-                            .addComponent(lblNomeCompAlt))
-                        .addGap(3, 3, 3)
-                        .addGroup(painelAlteraUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNomeCompAlt)
-                            .addComponent(txtNomeUserAlt)
-                            .addGroup(painelAlteraUserLayout.createSequentialGroup()
-                                .addComponent(txtCodigoAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 315, Short.MAX_VALUE))
-                            .addComponent(txtSenhaUserAlt))))
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelAlteraUserLayout.setVerticalGroup(
             painelAlteraUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAlteraUserLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(painelAlteraUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCodigoAlt)
-                    .addComponent(txtCodigoAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelAlteraUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNomeUserAlt)
-                    .addComponent(txtNomeUserAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelAlteraUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSenhaAlt)
-                    .addComponent(txtSenhaUserAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelAlteraUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNomeCompAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNomeCompAlt))
-                .addGap(16, 16, 16)
-                .addGroup(painelAlteraUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmbSetorAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbPerfilAlt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(painelAlteraUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblSetorAlt)
-                        .addComponent(lblPerfilAlt)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addGroup(painelAlteraUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGravarUserAlt)
-                    .addComponent(btnCancelar)))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabCadUser.addTab("Alteração", painelAlteraUser);
@@ -452,9 +503,7 @@ public class FrmUsuarios extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(tabCadUser, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(tabCadUser)
         );
 
         pack();
@@ -509,6 +558,8 @@ public class FrmUsuarios extends javax.swing.JDialog {
     private javax.swing.JComboBox cmbPerfilAlt;
     private javax.swing.JComboBox cmbSetor;
     private javax.swing.JComboBox cmbSetorAlt;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelCadUser;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblCodigoAlt;
     private javax.swing.JLabel lblNomeCompAlt;

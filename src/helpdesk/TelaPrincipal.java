@@ -84,7 +84,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent ae) {
                     FrmUsuarios f= new FrmUsuarios(new Frame(), true);
-                    f.setLocation(500,250);
+                    f.setLocation(250,100);
                     f.show();
                 }
             });
