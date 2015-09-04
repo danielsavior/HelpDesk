@@ -39,9 +39,9 @@ public class FrmConsultaChamados extends javax.swing.JDialog {
     private List<Chamado>psNovo=new ArrayList<>();
     private Usuario usuario;
     
-    public FrmConsultaChamados(Usuario u){
+    public FrmConsultaChamados(Frame f,Usuario u){
         
-        this(new Frame(),true);
+        this(f,false);
         usuario=u;
         cmbSetor.setEnabled(String.valueOf(usuario.getPerfil()).equals("2")?false:true);        
         carregaCombos();    

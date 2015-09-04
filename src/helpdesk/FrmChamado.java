@@ -60,8 +60,8 @@ public class FrmChamado extends javax.swing.JDialog {
     private char status;
     private long idUsuario;        
     private String dataRealizacao;
-    public FrmChamado(Usuario usuario, int op){
-        this(new Frame(),true);
+    public FrmChamado(Frame f, Usuario usuario, int op){
+        this(f,false);
         u=usuario;
         status="P".charAt(0);
         if(!String.valueOf(usuario.getPerfil()).equals("1")){

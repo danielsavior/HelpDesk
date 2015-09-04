@@ -38,7 +38,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
                 @Override
                 public void actionPerformed(ActionEvent ae) {
-                    FrmFornecedor f= new FrmFornecedor(new Frame(), true);
+                    FrmFornecedor f= new FrmFornecedor(TelaPrincipal.this, false);
                     f.setLocation(300,100);
                     f.show();
                 }
@@ -47,7 +47,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
                 @Override
                 public void actionPerformed(ActionEvent ae) {
-                    FrmMarca f= new FrmMarca(new Frame(), true);
+                    FrmMarca f= new FrmMarca(TelaPrincipal.this, false);
                     f.setLocation(300,100);
                     f.show();
                 }
@@ -56,7 +56,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
                 @Override
                 public void actionPerformed(ActionEvent ae) {
-                    FrmProblema f= new FrmProblema(new Frame(), true);
+                    FrmProblema f= new FrmProblema(TelaPrincipal.this, false);
                     f.setLocation(300,100);
                     f.show();
                 }
@@ -65,7 +65,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
                 @Override
                 public void actionPerformed(ActionEvent ae) {
-                    FrmSetor f= new FrmSetor(new Frame(), true);
+                    FrmSetor f= new FrmSetor(TelaPrincipal.this, false);
                     f.setLocation(300,100);
                     f.show();
                 }
@@ -74,7 +74,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
                 @Override
                 public void actionPerformed(ActionEvent ae) {
-                    FrmSistemaOP f= new FrmSistemaOP(new Frame(), true);
+                    FrmSistemaOP f= new FrmSistemaOP(TelaPrincipal.this, false);
                     f.setLocation(300,100);
                     f.show();
                 }
@@ -83,7 +83,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
                 @Override
                 public void actionPerformed(ActionEvent ae) {
-                    FrmUsuarios f= new FrmUsuarios(new Frame(), true);
+                    FrmUsuarios f= new FrmUsuarios(TelaPrincipal.this, false);
                     f.setLocation(250,100);
                     f.show();
                 }
@@ -92,7 +92,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
                 @Override
                 public void actionPerformed(ActionEvent ae) {
-                    FrmEquipamento f= new FrmEquipamento(new Frame(), true);
+                    FrmEquipamento f= new FrmEquipamento(TelaPrincipal.this, false);
                     f.setLocation(300,100);
                     f.show();
                 }
@@ -101,7 +101,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
                 @Override
                 public void actionPerformed(ActionEvent ae) {
-                    FrmOffice f= new FrmOffice(new Frame(), true);
+                    FrmOffice f= new FrmOffice(TelaPrincipal.this, false);
                     f.setLocation(300,100);
                     f.show();
                 }
@@ -109,7 +109,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             menuAbrirChamado.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent ae) {
-                    FrmChamado f= new FrmChamado(u,0);
+                    FrmChamado f= new FrmChamado(TelaPrincipal.this, u,0);
                     f.setLocation(200,100);
                     f.show();                    
                 }
@@ -119,7 +119,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    FrmConsultaChamados f = new FrmConsultaChamados(u);
+                    FrmConsultaChamados f = new FrmConsultaChamados(TelaPrincipal.this,u);
                     f.setLocation(200, 100);
                     f.show();
                 }
@@ -128,7 +128,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             menuFecharChamado.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent ae) {
-                    FrmChamado f= new FrmChamado(u,1);
+                    FrmChamado f= new FrmChamado(TelaPrincipal.this,u,1);
                     f.setLocation(200,100);
                     f.show();                    
                 }
@@ -136,7 +136,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             menuConsultaEquip.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent ae) {
-                    FrmConsultaEquipamentos f= new FrmConsultaEquipamentos(new Frame(), true);
+                    FrmConsultaEquipamentos f= new FrmConsultaEquipamentos(TelaPrincipal.this, false);
                     f.setLocation(200,100);
                     f.show();                    
                 }
@@ -144,7 +144,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             menuConsultaImpressoras.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent ae) {
-                    FrmConsultaImpressora f= new FrmConsultaImpressora(new Frame(), true);
+                    FrmConsultaImpressora f= new FrmConsultaImpressora(TelaPrincipal.this, false);
                     f.setLocation(200,100);
                     f.show();                    
                 }
@@ -152,7 +152,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             menuCadImpressoras.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent ae) {
-                    FrmImpressora f= new FrmImpressora(new Frame(), true);
+                    FrmImpressora f= new FrmImpressora(TelaPrincipal.this, false);
                     f.setLocation(200,100);
                     f.show();                    
                 }
@@ -166,7 +166,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     resposta=JOptionPane.showConfirmDialog(null, "Deseja sair do sistema? ");
                     if(resposta==0){
                        TelaPrincipal.this.dispose();                       
-                       FrmLogin f=new FrmLogin(new Frame(), true);
+                       FrmLogin f=new FrmLogin(TelaPrincipal.this, true);
                        f.setLocation(500,250);
                        f.show();
                        dispose();
