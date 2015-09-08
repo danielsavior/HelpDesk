@@ -1,0 +1,1 @@
+alter table Equipamento add  `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ;
