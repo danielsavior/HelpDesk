@@ -31,7 +31,7 @@ end
 $$
 ##########################################################################################################################################
 
-
+alter table periferico add column nserie varchar(20), add constraint nserieUK unique(nserie) ;
 
 
 
