@@ -1,1 +1,37 @@
 alter table Equipamento add  `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+
+######################################CRIACAO DA TABELA DE PERIFERICOS E GATILHO DE CONSISTENCIA######################################
+CREATE TABLE `periferico` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `equipamento` int(11) NOT NULL,
+  `tipo` enum('Monitor','Teclado','Mouse') NOT NULL,
+  `marca` int(11) NOT NULL,  
+  `descricao` varchar(100) NOT NULL,  
+  `ativo` char(1) NOT NULL default 1 ,
+  PRIMARY KEY (`id`),  
+  KEY `fk_Periferico_equipamento1` (`equipamento`),
+  KEY `fk_Periferico_Marca1` (`marca`),  
+  constraint `fk_Periferico_equipamento1` foreign key (`equipamento`) references `Equipamento`(`id`),
+  constraint `fk_Periferico_Marca1` foreign key (`marca`) references `Marca`(`id`)
+  
+) ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` TRIGGER `helpdesk`.`Controla_Perifericos`
+BEFORE INSERT ON `helpdesk`.`periferico`
+FOR EACH ROW
+begin 
+declare conta int;
+SET conta=(SELECT COUNT(*)FROM periferico where equipamento=new.equipamento and tipo=new.tipo AND ativo);
+if(conta>0)then
+    SET NEW='Error:Tipo de periferico ja cadastrado para esse equipamento';
+    #INSERT INTO Atendimentos(idUsuario,numeroDaMesa)values(new.idUsuario,numeroDaMesa);
+end if;
+end
+$$
+##########################################################################################################################################
+
+
+
+
+
