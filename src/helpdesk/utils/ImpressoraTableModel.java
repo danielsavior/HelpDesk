@@ -34,7 +34,7 @@ public class ImpressoraTableModel extends AbstractTableModel {
         impressoras=new ArrayList<>(listaDeImpressoras);
     }
     
-    public void addChamado(Impressora e){
+    public void addImpressora(Impressora e){
         impressoras.add(e);
     }
     

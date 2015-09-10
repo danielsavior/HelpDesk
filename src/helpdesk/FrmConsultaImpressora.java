@@ -124,7 +124,7 @@ public class FrmConsultaImpressora extends javax.swing.JDialog {
         qtd=0;
         for(Impressora e:new ImpressoraController().buscarImpressoras(filtro)){
             psNovo.add(e);
-            tb.addChamado(e);
+            tb.addImpressora(e);
             tblImpressoras.setModel(tb);
             tblImpressoras.updateUI();
             tblImpressoras.repaint();
