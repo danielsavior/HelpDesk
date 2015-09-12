@@ -18,7 +18,7 @@ public class Periferico {
     private long marca;
     private String descricao;
     private char ativo;               
-    private String numeroSerie;
+    private String nserie;
 
     
     public long getId() {
@@ -58,10 +58,10 @@ public class Periferico {
         this.ativo = ativo;
     }
     public String getNumeroSerie() {
-        return numeroSerie;
+        return nserie;
     }
     public void setNumeroSerie(String numeroSerie) {
-        this.numeroSerie = numeroSerie;
+        this.nserie = numeroSerie;
     }    
     
 }

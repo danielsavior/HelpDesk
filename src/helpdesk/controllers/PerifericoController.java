@@ -32,7 +32,11 @@ public class PerifericoController implements ITodosController<Periferico> {
        dao=new PerifericoDAO();
        return dao.buscaPorID(id);
     }
-
+    
+    public List<Periferico>buscarPerifericos(long codEquipamento){
+        dao=new PerifericoDAO();
+        return dao.buscarPerifericos(codEquipamento);
+    }
     @Override
     public List<Periferico> buscarPorNome(String nome) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

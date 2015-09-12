@@ -22,6 +22,7 @@ import helpdesk.beans.Equipamento;
 import helpdesk.beans.Fornecedor;
 import helpdesk.beans.Marca;
 import helpdesk.beans.Office;
+import helpdesk.beans.Periferico;
 import helpdesk.beans.Setor;
 import helpdesk.beans.SistemaOP;
 import helpdesk.beans.Usuario;
@@ -29,9 +30,11 @@ import helpdesk.controllers.EquipamentoController;
 import helpdesk.controllers.FornecedorController;
 import helpdesk.controllers.MarcaController;
 import helpdesk.controllers.OfficeController;
+import helpdesk.controllers.PerifericoController;
 import helpdesk.controllers.SetorController;
 import helpdesk.controllers.SistemaOPController;
 import helpdesk.utils.AutoCompleteTextField;
+import helpdesk.utils.PerifericoTableModel;
 import helpdesk.utils.Utilidades;
 import java.awt.Frame;
 import java.awt.event.MouseEvent;
@@ -51,6 +54,10 @@ public class FrmEquipamento extends javax.swing.JDialog {
     /**
      * Creates new form FrmConfig
      */
+    private PerifericoTableModel tb;
+    private PerifericoTableModel tbAlt;
+    private List<Periferico>psNovo=new ArrayList();
+    private List<Periferico>psNovoAlt=new ArrayList();
     private List<String>listaDeEquipamentos;
     public FrmEquipamento(long codEquipamento){
         this(new Frame(),true);
@@ -60,11 +67,19 @@ public class FrmEquipamento extends javax.swing.JDialog {
     }
     public FrmEquipamento(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        tb=new PerifericoTableModel();        
+        tbAlt=new PerifericoTableModel();
         listaDeEquipamentos=new ArrayList<>();
         for(Equipamento e: new EquipamentoController().listar()){
             listaDeEquipamentos.add(e.getDescricao()+" codigo"+e.getId());
         }
         initComponents();  
+        tablePerifericos.getTableHeader().setReorderingAllowed(false);
+        tablePerifericos.getColumnModel().getColumn(0).setPreferredWidth(100);
+        tablePerifericos.getColumnModel().getColumn(1).setPreferredWidth(400);
+        tablePerifericos.getColumnModel().getColumn(2).setPreferredWidth(100);
+        
+        
         txtCodigo.setText(String.valueOf(Utilidades.retornarProximoID("Equipamento")));        
         carregaCombos();
         tabEquipamento.addChangeListener(new ChangeListener() {
@@ -146,6 +161,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
                 if (ke.getKeyCode()==10){
                     //JOptionPane.showMessageDialog(null, "Você pressionou Enter");                    
                     buscaPorID(Long.valueOf(txtCodigoAlt.getText()));
+                    carregarPerifericos(new PerifericoController().buscarPerifericos(Long.valueOf(txtCodigoAlt.getText())));
                 }  
             }
 
@@ -345,6 +361,19 @@ public class FrmEquipamento extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Equipamento não encontrado.");
         }
     }
+    private void carregarPerifericos(List<Periferico>perifericos){
+        psNovoAlt.clear();
+        tbAlt=new PerifericoTableModel();
+        tableAltPerifericos.setModel(tb);
+        tableAltPerifericos.repaint();        
+        for(Periferico p:perifericos){
+            psNovoAlt.add(p);
+            tbAlt.addPeriferico(p);
+            tableAltPerifericos.setModel(tb);
+            tableAltPerifericos.updateUI();
+            tableAltPerifericos.repaint();
+        }
+    }
     //</editor-fold>
     /**
      * This method is called from within the constructor to initialize the form.
@@ -374,11 +403,20 @@ public class FrmEquipamento extends javax.swing.JDialog {
         cmbOffice = new javax.swing.JComboBox();
         lblSetor = new javax.swing.JLabel();
         cmbSetor = new javax.swing.JComboBox();
-        btnGravarEquip = new javax.swing.JButton();
         lblIP = new javax.swing.JLabel();
         txtIP = new javax.swing.JTextField();
         lblDataCompra = new javax.swing.JLabel();
         txtDataCompra = new com.toedter.calendar.JDateChooser();
+        jPanelCadPerifericos = new javax.swing.JPanel();
+        lblTipoPeriferico = new javax.swing.JLabel();
+        lblDescricaoPeriferico = new javax.swing.JLabel();
+        lblNSeriePeriferico = new javax.swing.JLabel();
+        txtDescricaoPeriferico = new javax.swing.JTextField();
+        cmbTipoPeriferico = new javax.swing.JComboBox();
+        txtNSeriePeriferico = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablePerifericos = new javax.swing.JTable();
+        btnGravarEquip = new javax.swing.JButton();
         painelAlteraEquip = new javax.swing.JPanel();
         painelCadEquip1 = new javax.swing.JPanel();
         jPanelAltEquipamento = new javax.swing.JPanel();
@@ -402,6 +440,15 @@ public class FrmEquipamento extends javax.swing.JDialog {
         txtDataCompraAlt = new com.toedter.calendar.JDateChooser();
         lblSetorAlt = new javax.swing.JLabel();
         cmbSetorAlt = new javax.swing.JComboBox();
+        jPanelAltPerifericos = new javax.swing.JPanel();
+        lblTipoAltPeriferico = new javax.swing.JLabel();
+        lblDescricaoAltPeriferico = new javax.swing.JLabel();
+        lblNSerieAltPeriferico = new javax.swing.JLabel();
+        txtDescricaoAltPeriferico = new javax.swing.JTextField();
+        cmbTipoAltPeriferico = new javax.swing.JComboBox();
+        txtNSerieAltPeriferico = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableAltPerifericos = new javax.swing.JTable();
         btnCancelar = new javax.swing.JButton();
         btnGravarEquipAlt = new javax.swing.JButton();
 
@@ -442,8 +489,6 @@ public class FrmEquipamento extends javax.swing.JDialog {
             }
         });
 
-        btnGravarEquip.setText("Gravar");
-
         lblIP.setText("IP:");
 
         txtIP.addActionListener(new java.awt.event.ActionListener() {
@@ -463,17 +508,16 @@ public class FrmEquipamento extends javax.swing.JDialog {
                 .addGroup(jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCadEquipamentoLayout.createSequentialGroup()
                         .addGroup(jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCodigo)
-                            .addGroup(jPanelCadEquipamentoLayout.createSequentialGroup()
-                                .addComponent(lblCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(24, 24, 24)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lblCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                            .addComponent(txtCodigo))
                         .addGroup(jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelCadEquipamentoLayout.createSequentialGroup()
+                                .addGap(36, 36, 36)
                                 .addComponent(lblDescricao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(466, 466, 466))
                             .addGroup(jPanelCadEquipamentoLayout.createSequentialGroup()
-                                .addComponent(txtDescricao)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())))
                     .addGroup(jPanelCadEquipamentoLayout.createSequentialGroup()
                         .addGroup(jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -493,27 +537,23 @@ public class FrmEquipamento extends javax.swing.JDialog {
                             .addGroup(jPanelCadEquipamentoLayout.createSequentialGroup()
                                 .addGroup(jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanelCadEquipamentoLayout.createSequentialGroup()
-                                        .addComponent(lblSetor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(167, 167, 167))
+                                        .addComponent(lblSetor, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                                        .addGap(165, 165, 165))
                                     .addComponent(cmbSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanelCadEquipamentoLayout.createSequentialGroup()
                                         .addComponent(chkOffice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(98, 98, 98))
+                                        .addGap(96, 96, 96))
                                     .addComponent(cmbOffice, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtNumeroSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblNumeroSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelCadEquipamentoLayout.createSequentialGroup()
-                                        .addGap(342, 342, 342)
-                                        .addComponent(btnGravarEquip)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblIP, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtIP, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(lblDataCompra)
-                                                .addComponent(txtDataCompra, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)))))))
+                                    .addComponent(lblIP, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtIP, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblDataCompra)
+                                            .addComponent(txtDataCompra, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))))))
                         .addContainerGap())))
         );
 
@@ -545,17 +585,6 @@ public class FrmEquipamento extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCadEquipamentoLayout.createSequentialGroup()
-                        .addComponent(lblIP, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblDataCompra)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDataCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(btnGravarEquip, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(22, 22, 22))
-                    .addGroup(jPanelCadEquipamentoLayout.createSequentialGroup()
                         .addComponent(lblNumeroSerie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(4, 4, 4)
                         .addComponent(txtNumeroSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -565,12 +594,77 @@ public class FrmEquipamento extends javax.swing.JDialog {
                         .addComponent(cmbOffice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblSetor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(1, 1, 1)
+                        .addGap(2, 2, 2)
                         .addComponent(cmbSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 5, Short.MAX_VALUE)
-                        .addGap(24, 24, 24))))
+                        .addGap(24, 24, 24))
+                    .addGroup(jPanelCadEquipamentoLayout.createSequentialGroup()
+                        .addComponent(lblIP, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblDataCompra)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDataCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         jPanelCadEquipamentoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmbFornecedor, cmbMarca, cmbOffice, cmbSetor, cmbSistemaOP, txtCodigo, txtDataCompra, txtDescricao, txtIP, txtNumeroSerie});
+
+        jPanelCadPerifericos.setBackground(java.awt.Color.lightGray);
+        jPanelCadPerifericos.setBorder(javax.swing.BorderFactory.createTitledBorder("Perifericos"));
+
+        lblTipoPeriferico.setText("Tipo:");
+
+        lblDescricaoPeriferico.setText("Descrição:");
+
+        lblNSeriePeriferico.setText("Nº de série:");
+
+        cmbTipoPeriferico.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1-Monitor", "2-Teclado", "3-Mouse" }));
+
+        tablePerifericos.setModel(tb);
+        jScrollPane1.setViewportView(tablePerifericos);
+
+        javax.swing.GroupLayout jPanelCadPerifericosLayout = new javax.swing.GroupLayout(jPanelCadPerifericos);
+        jPanelCadPerifericos.setLayout(jPanelCadPerifericosLayout);
+        jPanelCadPerifericosLayout.setHorizontalGroup(
+            jPanelCadPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCadPerifericosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelCadPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(jPanelCadPerifericosLayout.createSequentialGroup()
+                        .addGroup(jPanelCadPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTipoPeriferico)
+                            .addComponent(cmbTipoPeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelCadPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelCadPerifericosLayout.createSequentialGroup()
+                                .addComponent(lblDescricaoPeriferico)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(txtDescricaoPeriferico))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelCadPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblNSeriePeriferico)
+                            .addComponent(txtNSeriePeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
+        );
+        jPanelCadPerifericosLayout.setVerticalGroup(
+            jPanelCadPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCadPerifericosLayout.createSequentialGroup()
+                .addGroup(jPanelCadPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTipoPeriferico)
+                    .addComponent(lblDescricaoPeriferico)
+                    .addComponent(lblNSeriePeriferico))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelCadPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDescricaoPeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbTipoPeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNSeriePeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        btnGravarEquip.setText("Gravar");
 
         javax.swing.GroupLayout painelCadEquipLayout = new javax.swing.GroupLayout(painelCadEquip);
         painelCadEquip.setLayout(painelCadEquipLayout);
@@ -578,7 +672,12 @@ public class FrmEquipamento extends javax.swing.JDialog {
             painelCadEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelCadEquipLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelCadEquipamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(painelCadEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelCadEquipamento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelCadPerifericos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelCadEquipLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnGravarEquip)))
                 .addContainerGap())
         );
         painelCadEquipLayout.setVerticalGroup(
@@ -586,7 +685,11 @@ public class FrmEquipamento extends javax.swing.JDialog {
             .addGroup(painelCadEquipLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanelCadEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelCadPerifericos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnGravarEquip)
+                .addContainerGap())
         );
 
         tabEquipamento.addTab("Cadastro", painelCadEquip);
@@ -622,10 +725,6 @@ public class FrmEquipamento extends javax.swing.JDialog {
 
         lblSetorAlt.setText("Setor:");
 
-        btnCancelar.setText("Cancelar");
-
-        btnGravarEquipAlt.setText("Gravar");
-
         javax.swing.GroupLayout jPanelAltEquipamentoLayout = new javax.swing.GroupLayout(jPanelAltEquipamento);
         jPanelAltEquipamento.setLayout(jPanelAltEquipamentoLayout);
         jPanelAltEquipamentoLayout.setHorizontalGroup(
@@ -634,32 +733,37 @@ public class FrmEquipamento extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanelAltEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelAltEquipamentoLayout.createSequentialGroup()
+                        .addComponent(cmbSetorAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanelAltEquipamentoLayout.createSequentialGroup()
                         .addGroup(jPanelAltEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNumeroSerieAlt)
-                            .addComponent(txtNumeroSerieAlt)
-                            .addComponent(cmbOfficeAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chkOfficeAlt))
+                            .addComponent(txtCodigoAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCodigoAlt)
+                            .addComponent(lblSetorAlt))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanelAltEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelAltEquipamentoLayout.createSequentialGroup()
-                                .addGap(202, 202, 202)
-                                .addGroup(jPanelAltEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtIPAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblIPAlt))
-                                .addGap(0, 12, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAltEquipamentoLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanelAltEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblDataCompraAlt)
-                                    .addComponent(txtDataCompraAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lblDescricaoAlt)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanelAltEquipamentoLayout.createSequentialGroup()
+                                .addComponent(txtDescricaoAlt)
                                 .addContainerGap())))
                     .addGroup(jPanelAltEquipamentoLayout.createSequentialGroup()
                         .addGroup(jPanelAltEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelAltEquipamentoLayout.createSequentialGroup()
-                                .addComponent(cmbSetorAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnCancelar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnGravarEquipAlt))
+                                .addGroup(jPanelAltEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNumeroSerieAlt)
+                                    .addComponent(txtNumeroSerieAlt)
+                                    .addComponent(cmbOfficeAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(chkOfficeAlt))
+                                .addGroup(jPanelAltEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelAltEquipamentoLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtDataCompraAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanelAltEquipamentoLayout.createSequentialGroup()
+                                        .addGap(290, 290, 290)
+                                        .addComponent(lblDataCompraAlt)
+                                        .addGap(0, 71, Short.MAX_VALUE))))
                             .addGroup(jPanelAltEquipamentoLayout.createSequentialGroup()
                                 .addGroup(jPanelAltEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblFornecedorAlt)
@@ -673,18 +777,10 @@ public class FrmEquipamento extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanelAltEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblSitemaOPAlt)
-                                    .addComponent(cmbSistemaOPAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanelAltEquipamentoLayout.createSequentialGroup()
-                                .addGroup(jPanelAltEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCodigoAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblCodigoAlt)
-                                    .addComponent(lblSetorAlt))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanelAltEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelAltEquipamentoLayout.createSequentialGroup()
-                                        .addComponent(lblDescricaoAlt)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(txtDescricaoAlt))))
+                                    .addComponent(lblIPAlt)
+                                    .addGroup(jPanelAltEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txtIPAlt, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(cmbSistemaOPAlt, 0, 186, Short.MAX_VALUE)))))
                         .addContainerGap())))
         );
 
@@ -722,24 +818,18 @@ public class FrmEquipamento extends javax.swing.JDialog {
                     .addComponent(txtIPAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNumeroSerieAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelAltEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkOfficeAlt)
+                    .addComponent(lblDataCompraAlt))
+                .addGap(1, 1, 1)
                 .addGroup(jPanelAltEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelAltEquipamentoLayout.createSequentialGroup()
-                        .addGroup(jPanelAltEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(chkOfficeAlt)
-                            .addComponent(lblDataCompraAlt))
-                        .addGap(1, 1, 1)
-                        .addComponent(cmbOfficeAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelAltEquipamentoLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(txtDataCompraAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(cmbOfficeAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDataCompraAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(lblSetorAlt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelAltEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbSetorAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnGravarEquipAlt))
-                .addGap(9, 9, 9))
+                .addComponent(cmbSetorAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10))
         );
 
         jPanelAltEquipamentoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmbFornecedorAlt, cmbMarcaAlt, cmbOfficeAlt, cmbSetorAlt, cmbSistemaOPAlt, txtCodigoAlt, txtDataCompraAlt, txtDescricaoAlt, txtIPAlt, txtNumeroSerieAlt});
@@ -750,8 +840,8 @@ public class FrmEquipamento extends javax.swing.JDialog {
             painelCadEquip1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelCadEquip1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelAltEquipamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanelAltEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, 721, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
         painelCadEquip1Layout.setVerticalGroup(
             painelCadEquip1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -761,19 +851,94 @@ public class FrmEquipamento extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanelAltPerifericos.setBackground(java.awt.Color.gray);
+        jPanelAltPerifericos.setBorder(javax.swing.BorderFactory.createTitledBorder("Perifericos"));
+
+        lblTipoAltPeriferico.setText("Tipo:");
+
+        lblDescricaoAltPeriferico.setText("Descrição:");
+
+        lblNSerieAltPeriferico.setText("Nº de série:");
+
+        cmbTipoAltPeriferico.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1-Monitor", "2-Teclado", "3-Mouse" }));
+
+        tableAltPerifericos.setModel(tbAlt);
+        jScrollPane2.setViewportView(tableAltPerifericos);
+
+        javax.swing.GroupLayout jPanelAltPerifericosLayout = new javax.swing.GroupLayout(jPanelAltPerifericos);
+        jPanelAltPerifericos.setLayout(jPanelAltPerifericosLayout);
+        jPanelAltPerifericosLayout.setHorizontalGroup(
+            jPanelAltPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAltPerifericosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelAltPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
+                    .addGroup(jPanelAltPerifericosLayout.createSequentialGroup()
+                        .addGroup(jPanelAltPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTipoAltPeriferico)
+                            .addComponent(cmbTipoAltPeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelAltPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelAltPerifericosLayout.createSequentialGroup()
+                                .addComponent(lblDescricaoAltPeriferico)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(txtDescricaoAltPeriferico))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelAltPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblNSerieAltPeriferico)
+                            .addComponent(txtNSerieAltPeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
+        );
+        jPanelAltPerifericosLayout.setVerticalGroup(
+            jPanelAltPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAltPerifericosLayout.createSequentialGroup()
+                .addGroup(jPanelAltPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTipoAltPeriferico)
+                    .addComponent(lblDescricaoAltPeriferico)
+                    .addComponent(lblNSerieAltPeriferico))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelAltPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDescricaoAltPeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbTipoAltPeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNSerieAltPeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        btnCancelar.setText("Cancelar");
+
+        btnGravarEquipAlt.setText("Gravar");
+
         javax.swing.GroupLayout painelAlteraEquipLayout = new javax.swing.GroupLayout(painelAlteraEquip);
         painelAlteraEquip.setLayout(painelAlteraEquipLayout);
         painelAlteraEquipLayout.setHorizontalGroup(
             painelAlteraEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAlteraEquipLayout.createSequentialGroup()
                 .addComponent(painelCadEquip1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 13, Short.MAX_VALUE))
+            .addGroup(painelAlteraEquipLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelAlteraEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelAltPerifericos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAlteraEquipLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnCancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnGravarEquipAlt)))
+                .addContainerGap())
         );
         painelAlteraEquipLayout.setVerticalGroup(
             painelAlteraEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAlteraEquipLayout.createSequentialGroup()
                 .addComponent(painelCadEquip1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelAltPerifericos, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(painelAlteraEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelar)
+                    .addComponent(btnGravarEquipAlt))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabEquipamento.addTab("Alteração", painelAlteraEquip);
@@ -786,7 +951,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(tabEquipamento)
         );
 
         pack();
@@ -857,38 +1022,56 @@ public class FrmEquipamento extends javax.swing.JDialog {
     private javax.swing.JComboBox cmbSetorAlt;
     private javax.swing.JComboBox cmbSistemaOP;
     private javax.swing.JComboBox cmbSistemaOPAlt;
+    private javax.swing.JComboBox cmbTipoAltPeriferico;
+    private javax.swing.JComboBox cmbTipoPeriferico;
     private javax.swing.JPanel jPanelAltEquipamento;
+    private javax.swing.JPanel jPanelAltPerifericos;
     private javax.swing.JPanel jPanelCadEquipamento;
+    private javax.swing.JPanel jPanelCadPerifericos;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblCodigoAlt;
     private javax.swing.JLabel lblDataCompra;
     private javax.swing.JLabel lblDataCompraAlt;
     private javax.swing.JLabel lblDescricao;
     private javax.swing.JLabel lblDescricaoAlt;
+    private javax.swing.JLabel lblDescricaoAltPeriferico;
+    private javax.swing.JLabel lblDescricaoPeriferico;
     private javax.swing.JLabel lblFornecedor;
     private javax.swing.JLabel lblFornecedorAlt;
     private javax.swing.JLabel lblIP;
     private javax.swing.JLabel lblIPAlt;
     private javax.swing.JLabel lblMarca;
     private javax.swing.JLabel lblMarcaAlt;
+    private javax.swing.JLabel lblNSerieAltPeriferico;
+    private javax.swing.JLabel lblNSeriePeriferico;
     private javax.swing.JLabel lblNumeroSerie;
     private javax.swing.JLabel lblNumeroSerieAlt;
     private javax.swing.JLabel lblSetor;
     private javax.swing.JLabel lblSetorAlt;
     private javax.swing.JLabel lblSitemaOP;
     private javax.swing.JLabel lblSitemaOPAlt;
+    private javax.swing.JLabel lblTipoAltPeriferico;
+    private javax.swing.JLabel lblTipoPeriferico;
     private javax.swing.JPanel painelAlteraEquip;
     private javax.swing.JPanel painelCadEquip;
     private javax.swing.JPanel painelCadEquip1;
     private javax.swing.JTabbedPane tabEquipamento;
+    private javax.swing.JTable tableAltPerifericos;
+    private javax.swing.JTable tablePerifericos;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtCodigoAlt;
     private com.toedter.calendar.JDateChooser txtDataCompra;
     private com.toedter.calendar.JDateChooser txtDataCompraAlt;
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtDescricaoAlt;
+    private javax.swing.JTextField txtDescricaoAltPeriferico;
+    private javax.swing.JTextField txtDescricaoPeriferico;
     private javax.swing.JTextField txtIP;
     private javax.swing.JTextField txtIPAlt;
+    private javax.swing.JTextField txtNSerieAltPeriferico;
+    private javax.swing.JTextField txtNSeriePeriferico;
     private javax.swing.JTextField txtNumeroSerie;
     private javax.swing.JTextField txtNumeroSerieAlt;
     // End of variables declaration//GEN-END:variables
