@@ -74,10 +74,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
             listaDeEquipamentos.add(e.getDescricao()+" codigo"+e.getId());
         }
         initComponents();  
-        tablePerifericos.getTableHeader().setReorderingAllowed(false);
-        tablePerifericos.getColumnModel().getColumn(0).setPreferredWidth(100);
-        tablePerifericos.getColumnModel().getColumn(1).setPreferredWidth(400);
-        tablePerifericos.getColumnModel().getColumn(2).setPreferredWidth(100);
+        ajustarTabelas();
         
         
         txtCodigo.setText(String.valueOf(Utilidades.retornarProximoID("Equipamento")));        
@@ -162,6 +159,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
                     //JOptionPane.showMessageDialog(null, "Você pressionou Enter");                    
                     buscaPorID(Long.valueOf(txtCodigoAlt.getText()));
                     carregarPerifericos(new PerifericoController().buscarPerifericos(Long.valueOf(txtCodigoAlt.getText())));
+                    ajustarTabelas();
                 }  
             }
 
@@ -369,10 +367,21 @@ public class FrmEquipamento extends javax.swing.JDialog {
         for(Periferico p:perifericos){
             psNovoAlt.add(p);
             tbAlt.addPeriferico(p);
-            tableAltPerifericos.setModel(tb);
+            tableAltPerifericos.setModel(tbAlt);
             tableAltPerifericos.updateUI();
             tableAltPerifericos.repaint();
         }
+    }
+    private void ajustarTabelas(){
+        tablePerifericos.getTableHeader().setReorderingAllowed(false);
+        tablePerifericos.getColumnModel().getColumn(0).setPreferredWidth(100);
+        tablePerifericos.getColumnModel().getColumn(1).setPreferredWidth(400);
+        tablePerifericos.getColumnModel().getColumn(2).setPreferredWidth(100);
+        
+        tableAltPerifericos.getTableHeader().setReorderingAllowed(false);
+        tableAltPerifericos.getColumnModel().getColumn(0).setPreferredWidth(100);
+        tableAltPerifericos.getColumnModel().getColumn(1).setPreferredWidth(400);
+        tableAltPerifericos.getColumnModel().getColumn(2).setPreferredWidth(100);    
     }
     //</editor-fold>
     /**
@@ -585,7 +594,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCadEquipamentoLayout.createSequentialGroup()
-                        .addComponent(lblNumeroSerie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblNumeroSerie, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
                         .addGap(4, 4, 4)
                         .addComponent(txtNumeroSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -593,7 +602,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbOffice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblSetor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblSetor, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                         .addGap(2, 2, 2)
                         .addComponent(cmbSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 5, Short.MAX_VALUE)
                         .addGap(24, 24, 24))
@@ -664,6 +673,8 @@ public class FrmEquipamento extends javax.swing.JDialog {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        jPanelCadPerifericosLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmbTipoPeriferico, txtDescricaoPeriferico, txtNSeriePeriferico});
+
         btnGravarEquip.setText("Gravar");
 
         javax.swing.GroupLayout painelCadEquipLayout = new javax.swing.GroupLayout(painelCadEquip);
@@ -684,7 +695,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
             painelCadEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelCadEquipLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelCadEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelCadEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelCadPerifericos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -763,7 +774,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
                                     .addGroup(jPanelAltEquipamentoLayout.createSequentialGroup()
                                         .addGap(290, 290, 290)
                                         .addComponent(lblDataCompraAlt)
-                                        .addGap(0, 71, Short.MAX_VALUE))))
+                                        .addGap(0, 108, Short.MAX_VALUE))))
                             .addGroup(jPanelAltEquipamentoLayout.createSequentialGroup()
                                 .addGroup(jPanelAltEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblFornecedorAlt)
@@ -817,7 +828,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
                 .addGroup(jPanelAltEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtIPAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNumeroSerieAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(jPanelAltEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chkOfficeAlt)
                     .addComponent(lblDataCompraAlt))
@@ -903,8 +914,10 @@ public class FrmEquipamento extends javax.swing.JDialog {
                     .addComponent(txtNSerieAltPeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
+
+        jPanelAltPerifericosLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmbTipoAltPeriferico, txtDescricaoAltPeriferico, txtNSerieAltPeriferico});
 
         btnCancelar.setText("Cancelar");
 
@@ -933,7 +946,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
             .addGroup(painelAlteraEquipLayout.createSequentialGroup()
                 .addComponent(painelCadEquip1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelAltPerifericos, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelAltPerifericos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(painelAlteraEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)

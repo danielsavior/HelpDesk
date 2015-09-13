@@ -75,7 +75,7 @@ public class PerifericoTableModel extends AbstractTableModel{
         Periferico p=perifericos.get(rowIndex);
         switch(columnIndex){
             case TIPO:
-               p.setTipo((int)aValue);
+               p.setTipo((String)aValue);
             case DESCRICAO:
                 p.setDescricao((String)aValue);
             case NSERIE:

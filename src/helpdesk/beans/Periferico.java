@@ -8,13 +8,13 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="equipamento")
+@Table(name="periferico")
 public class Periferico {
     @Id
     @GeneratedValue
     private long id;
     private long equipamento;
-    private int tipo;
+    private String tipo;
     private long marca;
     private String descricao;
     private char ativo;               
@@ -33,10 +33,11 @@ public class Periferico {
     public void setEquipamento(long equipamento) {
         this.equipamento = equipamento;
     }
-    public int getTipo() {
+    public String getTipo() {
+        
         return tipo;
     }
-    public void setTipo(int tipo) {
+    public void setTipo(String tipo) {                        
         this.tipo = tipo;
     }
     public long getMarca() {

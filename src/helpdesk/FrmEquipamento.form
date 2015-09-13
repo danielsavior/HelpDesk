@@ -74,7 +74,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanelCadEquipamento" min="-2" pref="332" max="-2" attributes="0"/>
+                      <Component id="jPanelCadEquipamento" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanelCadPerifericos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -203,7 +203,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblNumeroSerie" max="32767" attributes="0"/>
+                                  <Component id="lblNumeroSerie" pref="24" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                                   <Component id="txtNumeroSerie" linkSize="2" min="-2" pref="28" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -211,7 +211,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cmbOffice" linkSize="2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblSetor" max="32767" attributes="0"/>
+                                  <Component id="lblSetor" pref="25" max="32767" attributes="0"/>
                                   <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                                   <Component id="cmbSetor" linkSize="2" pref="5" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
@@ -396,9 +396,9 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtDescricaoPeriferico" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cmbTipoPeriferico" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNSeriePeriferico" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtDescricaoPeriferico" linkSize="11" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbTipoPeriferico" linkSize="11" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNSeriePeriferico" linkSize="11" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="99" max="-2" attributes="0"/>
@@ -503,7 +503,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="painelCadEquip1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanelAltPerifericos" min="-2" pref="194" max="-2" attributes="0"/>
+                      <Component id="jPanelAltPerifericos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -603,7 +603,7 @@
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <EmptySpace min="-2" pref="290" max="-2" attributes="0"/>
                                                       <Component id="lblDataCompraAlt" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="0" pref="71" max="32767" attributes="0"/>
+                                                      <EmptySpace min="0" pref="108" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -672,7 +672,7 @@
                                   <Component id="txtIPAlt" linkSize="8" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtNumeroSerieAlt" linkSize="8" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="65" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="chkOfficeAlt" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblDataCompraAlt" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -851,13 +851,13 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtDescricaoAltPeriferico" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cmbTipoAltPeriferico" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNSerieAltPeriferico" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtDescricaoAltPeriferico" linkSize="10" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbTipoAltPeriferico" linkSize="10" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNSerieAltPeriferico" linkSize="10" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jScrollPane2" min="-2" pref="99" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="21" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
