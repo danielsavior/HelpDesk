@@ -44,6 +44,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JTable;
 
 /**
  *
@@ -57,7 +58,8 @@ public class FrmEquipamento extends javax.swing.JDialog {
     private PerifericoTableModel tb;
     private PerifericoTableModel tbAlt;
     private List<Periferico>psNovo=new ArrayList();
-    private List<Periferico>psNovoAlt=new ArrayList();
+    private List<Periferico>psEdicao=new ArrayList();
+    private List<Periferico>listaInativar=new ArrayList();
     private List<String>listaDeEquipamentos;
     public FrmEquipamento(long codEquipamento){
         this(new Frame(),true);
@@ -230,6 +232,37 @@ public class FrmEquipamento extends javax.swing.JDialog {
             }
         });
         
+        txtNSerieAltPeriferico.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent ke) {
+                
+            }
+
+            @Override
+            public void keyPressed(KeyEvent ke) {
+                if (ke.getKeyCode()==10){
+                    try{
+                        Periferico p = new Periferico();
+                        p.setEquipamento(Long.valueOf(txtCodigoAlt.getText()));
+                        p.setTipo(cmbTipoAltPeriferico.getSelectedItem().toString());
+                        p.setDescricao(txtDescricaoAltPeriferico.getText());
+                        p.setMarca(Long.valueOf(String.valueOf(cmbMarcaPerifericoAlt.getSelectedItem().toString().subSequence(0, cmbMarcaPerifericoAlt.getSelectedItem().toString().indexOf("-")))));
+                        p.setAtivo("1".charAt(0));
+                        p.setNumeroSerie(txtNSerieAltPeriferico.getText());
+                        adicionarPeriferico(p, psEdicao, tablePerifericosAlt, tbAlt);                    
+                    }catch(Exception e){
+                        JOptionPane.showMessageDialog(null, "Verifique os dados do periferico!");
+                    }
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent ke) {
+                
+            }
+        });
+        
     }
     //<editor-fold desc="Métodos privates">
     private void carregaCombos(){
@@ -239,6 +272,8 @@ public class FrmEquipamento extends javax.swing.JDialog {
         cmbSistemaOPAlt.removeAllItems();
         cmbMarca.removeAllItems();
         cmbMarcaAlt.removeAllItems();
+        cmbMarcaPeriferico.removeAllItems();
+        cmbMarcaPerifericoAlt.removeAllItems();
         cmbSetor.removeAllItems();
         cmbSetorAlt.removeAllItems();
         List<Fornecedor>fornecedores;
@@ -258,6 +293,8 @@ public class FrmEquipamento extends javax.swing.JDialog {
         for(Marca marca:marcas){
             cmbMarca.addItem(marca.getId()+"-"+marca.getDescricao());
             cmbMarcaAlt.addItem(marca.getId()+"-"+marca.getDescricao());
+            cmbMarcaPerifericoAlt.addItem(marca.getId()+"-"+marca.getDescricao());
+            cmbMarcaPeriferico.addItem(marca.getId()+"-"+marca.getDescricao());
         }
         List<Setor>setores;
         setores=new SetorController().listar();
@@ -290,6 +327,14 @@ public class FrmEquipamento extends javax.swing.JDialog {
         txtIPAlt.setText("");               
         txtDataCompraAlt.setDate(null);
         chkOfficeAlt.setSelected(false);
+        
+        tbAlt=new PerifericoTableModel();
+        psEdicao.clear();
+        listaInativar.clear();        
+        tablePerifericosAlt.setModel(tbAlt);
+        tablePerifericosAlt.updateUI();
+        tablePerifericosAlt.repaint(); 
+        ajustarTabelas();
     }
     private void limparInclusao(){        
         txtDescricao.setText("");
@@ -360,28 +405,49 @@ public class FrmEquipamento extends javax.swing.JDialog {
         }
     }
     private void carregarPerifericos(List<Periferico>perifericos){
-        psNovoAlt.clear();
+        psEdicao.clear();
         tbAlt=new PerifericoTableModel();
-        tableAltPerifericos.setModel(tb);
-        tableAltPerifericos.repaint();        
+        tablePerifericosAlt.setModel(tb);
+        tablePerifericosAlt.repaint();        
         for(Periferico p:perifericos){
-            psNovoAlt.add(p);
-            tbAlt.addPeriferico(p);
-            tableAltPerifericos.setModel(tbAlt);
-            tableAltPerifericos.updateUI();
-            tableAltPerifericos.repaint();
+            adicionarPeriferico(p, psEdicao, tablePerifericosAlt, tbAlt);
         }
     }
+    
+    private void adicionarPeriferico(Periferico p,List<Periferico> ps,JTable tabela, PerifericoTableModel tbMeu){
+        try{            
+            for(Periferico pe:ps){
+                if(pe.getTipo().equals(p.getTipo())){
+                    listaInativar.add(pe);
+                    ps.remove(pe);
+                    tbMeu.remove(pe);                    
+                    break;
+                }
+            }
+            ps.add(p);
+            tbMeu.addPeriferico(p);
+            tabela.setModel(tbMeu);
+            tabela.updateUI();
+            tabela.repaint();                                        
+        }catch(Exception e){
+           JOptionPane.showMessageDialog(null, "Confira os dados do periferico!");
+           e.printStackTrace();
+        }
+        
+    }
+    
+    
+    
     private void ajustarTabelas(){
         tablePerifericos.getTableHeader().setReorderingAllowed(false);
         tablePerifericos.getColumnModel().getColumn(0).setPreferredWidth(100);
         tablePerifericos.getColumnModel().getColumn(1).setPreferredWidth(400);
         tablePerifericos.getColumnModel().getColumn(2).setPreferredWidth(100);
         
-        tableAltPerifericos.getTableHeader().setReorderingAllowed(false);
-        tableAltPerifericos.getColumnModel().getColumn(0).setPreferredWidth(100);
-        tableAltPerifericos.getColumnModel().getColumn(1).setPreferredWidth(400);
-        tableAltPerifericos.getColumnModel().getColumn(2).setPreferredWidth(100);    
+        tablePerifericosAlt.getTableHeader().setReorderingAllowed(false);
+        tablePerifericosAlt.getColumnModel().getColumn(0).setPreferredWidth(100);
+        tablePerifericosAlt.getColumnModel().getColumn(1).setPreferredWidth(400);
+        tablePerifericosAlt.getColumnModel().getColumn(2).setPreferredWidth(100);    
     }
     //</editor-fold>
     /**
@@ -425,6 +491,8 @@ public class FrmEquipamento extends javax.swing.JDialog {
         txtNSeriePeriferico = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablePerifericos = new javax.swing.JTable();
+        cmbMarcaPeriferico = new javax.swing.JComboBox();
+        lblMarcaPeriferico = new javax.swing.JLabel();
         btnGravarEquip = new javax.swing.JButton();
         painelAlteraEquip = new javax.swing.JPanel();
         painelCadEquip1 = new javax.swing.JPanel();
@@ -457,7 +525,9 @@ public class FrmEquipamento extends javax.swing.JDialog {
         cmbTipoAltPeriferico = new javax.swing.JComboBox();
         txtNSerieAltPeriferico = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tableAltPerifericos = new javax.swing.JTable();
+        tablePerifericosAlt = new javax.swing.JTable();
+        cmbMarcaPerifericoAlt = new javax.swing.JComboBox();
+        lblMarcaPerifericoAlt = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
         btnGravarEquipAlt = new javax.swing.JButton();
 
@@ -517,7 +587,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
                 .addGroup(jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCadEquipamentoLayout.createSequentialGroup()
                         .addGroup(jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                            .addComponent(lblCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                             .addComponent(txtCodigo))
                         .addGroup(jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelCadEquipamentoLayout.createSequentialGroup()
@@ -546,7 +616,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
                             .addGroup(jPanelCadEquipamentoLayout.createSequentialGroup()
                                 .addGroup(jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanelCadEquipamentoLayout.createSequentialGroup()
-                                        .addComponent(lblSetor, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                                        .addComponent(lblSetor, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
                                         .addGap(165, 165, 165))
                                     .addComponent(cmbSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanelCadEquipamentoLayout.createSequentialGroup()
@@ -594,7 +664,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCadEquipamentoLayout.createSequentialGroup()
-                        .addComponent(lblNumeroSerie, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                        .addComponent(lblNumeroSerie, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
                         .addGap(4, 4, 4)
                         .addComponent(txtNumeroSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -602,7 +672,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbOffice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblSetor, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                        .addComponent(lblSetor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(2, 2, 2)
                         .addComponent(cmbSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 5, Short.MAX_VALUE)
                         .addGap(24, 24, 24))
@@ -628,10 +698,12 @@ public class FrmEquipamento extends javax.swing.JDialog {
 
         lblNSeriePeriferico.setText("Nº de série:");
 
-        cmbTipoPeriferico.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1-Monitor", "2-Teclado", "3-Mouse" }));
+        cmbTipoPeriferico.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Monitor", "Teclado", "Mouse" }));
 
         tablePerifericos.setModel(tb);
         jScrollPane1.setViewportView(tablePerifericos);
+
+        lblMarcaPeriferico.setText("Marca:");
 
         javax.swing.GroupLayout jPanelCadPerifericosLayout = new javax.swing.GroupLayout(jPanelCadPerifericos);
         jPanelCadPerifericos.setLayout(jPanelCadPerifericosLayout);
@@ -640,18 +712,22 @@ public class FrmEquipamento extends javax.swing.JDialog {
             .addGroup(jPanelCadPerifericosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelCadPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
                     .addGroup(jPanelCadPerifericosLayout.createSequentialGroup()
                         .addGroup(jPanelCadPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTipoPeriferico)
-                            .addComponent(cmbTipoPeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmbTipoPeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelCadPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDescricaoPeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblDescricaoPeriferico))
+                        .addGap(2, 2, 2)
+                        .addGroup(jPanelCadPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelCadPerifericosLayout.createSequentialGroup()
-                                .addComponent(lblDescricaoPeriferico)
+                                .addComponent(lblMarcaPeriferico)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txtDescricaoPeriferico))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cmbMarcaPeriferico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(2, 2, 2)
                         .addGroup(jPanelCadPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNSeriePeriferico)
                             .addComponent(txtNSeriePeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -663,14 +739,17 @@ public class FrmEquipamento extends javax.swing.JDialog {
                 .addGroup(jPanelCadPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTipoPeriferico)
                     .addComponent(lblDescricaoPeriferico)
-                    .addComponent(lblNSeriePeriferico))
+                    .addComponent(lblNSeriePeriferico)
+                    .addComponent(lblMarcaPeriferico))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelCadPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDescricaoPeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbTipoPeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNSeriePeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelCadPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbTipoPeriferico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDescricaoPeriferico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbMarcaPeriferico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNSeriePeriferico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jPanelCadPerifericosLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmbTipoPeriferico, txtDescricaoPeriferico, txtNSeriePeriferico});
@@ -697,7 +776,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jPanelCadEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelCadPerifericos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelCadPerifericos, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnGravarEquip)
                 .addContainerGap())
@@ -774,7 +853,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
                                     .addGroup(jPanelAltEquipamentoLayout.createSequentialGroup()
                                         .addGap(290, 290, 290)
                                         .addComponent(lblDataCompraAlt)
-                                        .addGap(0, 108, Short.MAX_VALUE))))
+                                        .addGap(0, 71, Short.MAX_VALUE))))
                             .addGroup(jPanelAltEquipamentoLayout.createSequentialGroup()
                                 .addGroup(jPanelAltEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblFornecedorAlt)
@@ -828,7 +907,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
                 .addGroup(jPanelAltEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtIPAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNumeroSerieAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelAltEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chkOfficeAlt)
                     .addComponent(lblDataCompraAlt))
@@ -871,10 +950,18 @@ public class FrmEquipamento extends javax.swing.JDialog {
 
         lblNSerieAltPeriferico.setText("Nº de série:");
 
-        cmbTipoAltPeriferico.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1-Monitor", "2-Teclado", "3-Mouse" }));
+        cmbTipoAltPeriferico.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Monitor", "Teclado", "Mouse" }));
 
-        tableAltPerifericos.setModel(tbAlt);
-        jScrollPane2.setViewportView(tableAltPerifericos);
+        txtNSerieAltPeriferico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNSerieAltPerifericoActionPerformed(evt);
+            }
+        });
+
+        tablePerifericosAlt.setModel(tbAlt);
+        jScrollPane2.setViewportView(tablePerifericosAlt);
+
+        lblMarcaPerifericoAlt.setText("Marca:");
 
         javax.swing.GroupLayout jPanelAltPerifericosLayout = new javax.swing.GroupLayout(jPanelAltPerifericos);
         jPanelAltPerifericos.setLayout(jPanelAltPerifericosLayout);
@@ -883,21 +970,28 @@ public class FrmEquipamento extends javax.swing.JDialog {
             .addGroup(jPanelAltPerifericosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelAltPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
                     .addGroup(jPanelAltPerifericosLayout.createSequentialGroup()
                         .addGroup(jPanelAltPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTipoAltPeriferico)
-                            .addComponent(cmbTipoAltPeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cmbTipoAltPeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanelAltPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDescricaoAltPeriferico)
+                            .addComponent(txtDescricaoAltPeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanelAltPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelAltPerifericosLayout.createSequentialGroup()
-                                .addComponent(lblDescricaoAltPeriferico)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txtDescricaoAltPeriferico))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelAltPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNSerieAltPeriferico)
-                            .addComponent(txtNSerieAltPeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(15, 15, 15)
+                                .addComponent(lblMarcaPerifericoAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelAltPerifericosLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmbMarcaPerifericoAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanelAltPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanelAltPerifericosLayout.createSequentialGroup()
+                                .addComponent(lblNSerieAltPeriferico)
+                                .addGap(112, 112, 112))
+                            .addComponent(txtNSerieAltPeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane2))
                 .addContainerGap())
         );
         jPanelAltPerifericosLayout.setVerticalGroup(
@@ -906,15 +1000,17 @@ public class FrmEquipamento extends javax.swing.JDialog {
                 .addGroup(jPanelAltPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTipoAltPeriferico)
                     .addComponent(lblDescricaoAltPeriferico)
-                    .addComponent(lblNSerieAltPeriferico))
+                    .addComponent(lblNSerieAltPeriferico)
+                    .addComponent(lblMarcaPerifericoAlt))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelAltPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDescricaoAltPeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbTipoAltPeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNSerieAltPeriferico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelAltPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbTipoAltPeriferico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDescricaoAltPeriferico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbMarcaPerifericoAlt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNSerieAltPeriferico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanelAltPerifericosLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmbTipoAltPeriferico, txtDescricaoAltPeriferico, txtNSerieAltPeriferico});
@@ -929,7 +1025,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
             painelAlteraEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAlteraEquipLayout.createSequentialGroup()
                 .addComponent(painelCadEquip1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 13, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(painelAlteraEquipLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(painelAlteraEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -946,7 +1042,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
             .addGroup(painelAlteraEquipLayout.createSequentialGroup()
                 .addComponent(painelCadEquip1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelAltPerifericos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelAltPerifericos, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(painelAlteraEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
@@ -977,6 +1073,10 @@ public class FrmEquipamento extends javax.swing.JDialog {
     private void txtIPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIPActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIPActionPerformed
+
+    private void txtNSerieAltPerifericoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNSerieAltPerifericoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNSerieAltPerifericoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1029,6 +1129,8 @@ public class FrmEquipamento extends javax.swing.JDialog {
     private javax.swing.JComboBox cmbFornecedorAlt;
     private javax.swing.JComboBox cmbMarca;
     private javax.swing.JComboBox cmbMarcaAlt;
+    private javax.swing.JComboBox cmbMarcaPeriferico;
+    private javax.swing.JComboBox cmbMarcaPerifericoAlt;
     private javax.swing.JComboBox cmbOffice;
     private javax.swing.JComboBox cmbOfficeAlt;
     private javax.swing.JComboBox cmbSetor;
@@ -1057,6 +1159,8 @@ public class FrmEquipamento extends javax.swing.JDialog {
     private javax.swing.JLabel lblIPAlt;
     private javax.swing.JLabel lblMarca;
     private javax.swing.JLabel lblMarcaAlt;
+    private javax.swing.JLabel lblMarcaPeriferico;
+    private javax.swing.JLabel lblMarcaPerifericoAlt;
     private javax.swing.JLabel lblNSerieAltPeriferico;
     private javax.swing.JLabel lblNSeriePeriferico;
     private javax.swing.JLabel lblNumeroSerie;
@@ -1071,8 +1175,8 @@ public class FrmEquipamento extends javax.swing.JDialog {
     private javax.swing.JPanel painelCadEquip;
     private javax.swing.JPanel painelCadEquip1;
     private javax.swing.JTabbedPane tabEquipamento;
-    private javax.swing.JTable tableAltPerifericos;
     private javax.swing.JTable tablePerifericos;
+    private javax.swing.JTable tablePerifericosAlt;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtCodigoAlt;
     private com.toedter.calendar.JDateChooser txtDataCompra;
