@@ -76,7 +76,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanelCadEquipamento" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanelCadPerifericos" min="-2" pref="186" max="-2" attributes="0"/>
+                      <Component id="jPanelCadPerifericos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnGravarEquip" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -523,7 +523,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="painelCadEquip1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanelAltPerifericos" min="-2" pref="198" max="-2" attributes="0"/>
+                      <Component id="jPanelAltPerifericos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -623,7 +623,7 @@
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <EmptySpace min="-2" pref="290" max="-2" attributes="0"/>
                                                       <Component id="lblDataCompraAlt" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="0" pref="71" max="32767" attributes="0"/>
+                                                      <EmptySpace min="0" pref="108" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -692,7 +692,7 @@
                                   <Component id="txtIPAlt" linkSize="8" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtNumeroSerieAlt" linkSize="8" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="65" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="chkOfficeAlt" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblDataCompraAlt" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -844,7 +844,7 @@
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lblDescricaoAltPeriferico" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtDescricaoAltPeriferico" min="-2" pref="238" max="-2" attributes="0"/>
+                                      <Component id="txtDescricaoPerifericoAlt" min="-2" pref="238" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
@@ -858,11 +858,8 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lblNSerieAltPeriferico" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="txtNSerieAltPeriferico" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                                      <Component id="lblNSerieAltPeriferico" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtNSeriePerifericoAlt" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="jScrollPane2" max="32767" attributes="0"/>
@@ -883,13 +880,13 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="cmbTipoAltPeriferico" linkSize="10" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtDescricaoAltPeriferico" linkSize="10" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtDescricaoPerifericoAlt" linkSize="10" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="cmbMarcaPerifericoAlt" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNSerieAltPeriferico" linkSize="10" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNSeriePerifericoAlt" linkSize="10" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jScrollPane2" min="-2" pref="99" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="25" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -910,7 +907,7 @@
                     <Property name="text" type="java.lang.String" value="N&#xba; de s&#xe9;rie:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtDescricaoAltPeriferico">
+                <Component class="javax.swing.JTextField" name="txtDescricaoPerifericoAlt">
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cmbTipoAltPeriferico">
                   <Properties>
@@ -923,9 +920,9 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtNSerieAltPeriferico">
+                <Component class="javax.swing.JTextField" name="txtNSeriePerifericoAlt">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNSerieAltPerifericoActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNSeriePerifericoAltActionPerformed"/>
                   </Events>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane2">

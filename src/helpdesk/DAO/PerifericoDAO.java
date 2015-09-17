@@ -55,5 +55,23 @@ public class PerifericoDAO extends ATodosDAO<Periferico>{
     public List<Periferico> buscaPorNome(String nome) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public boolean checaNSerie(String nSerie) {
+       boolean retorno=false;
+       Session session=null;
+       Query query=null;
+       StringBuilder s=new StringBuilder();
+       s.append("SELECT count(*) FROM Periferico  WHERE nserie= ");
+       s.append( nSerie);
+       s.append( " and ativo=1 ");   
+       try{
+           session=HibernateUtil.getSessionFactory().openSession();
+           query=session.createQuery(s.toString());  
+           retorno=((Integer)query.list().get(0))>0?false:true;
+       }catch(Exception e){
+           
+       }
+       return retorno;
+    }
     
 }

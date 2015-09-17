@@ -33,6 +33,11 @@ public class PerifericoController implements ITodosController<Periferico> {
        return dao.buscaPorID(id);
     }
     
+    public boolean checaNSerie(String nSerie){
+        dao=new PerifericoDAO();
+        return dao.checaNSerie(nSerie);
+    }
+    
     public List<Periferico>buscarPerifericos(long codEquipamento){
         dao=new PerifericoDAO();
         return dao.buscarPerifericos(codEquipamento);
