@@ -267,6 +267,36 @@ public class FrmEquipamento extends javax.swing.JDialog {
             }
         });
         
+        tablePerifericosAlt.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if(tablePerifericosAlt.getRowCount()>=1){
+                    txtDescricaoPerifericoAlt.setText(String.valueOf(tablePerifericosAlt.getValueAt(tablePerifericosAlt.getSelectedRow(), 1)));
+                    txtNSeriePerifericoAlt.setText(String.valueOf(tablePerifericosAlt.getValueAt(tablePerifericosAlt.getSelectedRow(), 2)));
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
     }
     //<editor-fold desc="Métodos privates">
     private void carregaCombos(){

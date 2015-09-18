@@ -67,7 +67,7 @@ public class PerifericoDAO extends ATodosDAO<Periferico>{
        try{
            session=HibernateUtil.getSessionFactory().openSession();
            query=session.createQuery(s.toString());  
-           retorno=((Integer)query.list().get(0))>0?false:true;
+           retorno=((Long)query.list().get(0))>0?false:true;
        }catch(Exception e){
            
        }
