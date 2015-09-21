@@ -46,7 +46,7 @@ public class ChamadoDAO extends ATodosDAO<Chamado> {
        s.append("SELECT c.id,date_format(c.dataAbertura,'%d-%m-%Y'), u.nomeCompleto as usuario, ");       
        s.append("s.descricao as setor,p.descricao as problema,c.prioridade,c.status ");       
        s.append("FROM Chamado c,Usuario u, Setor s, Problema p ");       
-       s.append("WHERE  c.problema = p.id AND c.usuario = u.id AND u.setor = s.id ");              
+       s.append("WHERE  c.problema = p.id AND c.usuario = u.id AND u.setor = s.id AND c.status='P' ");              
        if(setor>0){
             s.append("and s.id= ");              
             s.append(String.valueOf(setor));              
