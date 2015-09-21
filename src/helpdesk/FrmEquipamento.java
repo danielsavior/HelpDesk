@@ -93,10 +93,25 @@ public class FrmEquipamento extends javax.swing.JDialog {
 
             @Override
             public void stateChanged(ChangeEvent ce) {
-                if(tabEquipamento.getSelectedIndex()==0){
-                    limparAlteracao();
+                int resposta=0;
+                if(tabEquipamento.getSelectedIndex()==0){                    
+                    if(!listaIncluir.isEmpty()||!mapAlterar.isEmpty()){                         
+                        resposta=JOptionPane.showConfirmDialog(null, "Deseja abandonar as modificações?");
+                        if(resposta==0){                                               
+                            limparAlteracao();
+                        }
+                    }else{
+                        limparAlteracao();
+                    }
                 }else{
-                    limparInclusao();
+                    if(!psNovo.isEmpty()){                    
+                        resposta=JOptionPane.showConfirmDialog(null, "Deseja abandonar as modificações?");
+                        if(resposta==0){                            
+                            limparInclusao();
+                        }
+                    }else{
+                       limparInclusao(); 
+                    }
                 }
             }
         });
@@ -285,7 +300,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
                         p.setMarca(Long.valueOf(String.valueOf(cmbMarcaPerifericoAlt.getSelectedItem().toString().subSequence(0, cmbMarcaPerifericoAlt.getSelectedItem().toString().indexOf("-")))));
                         p.setAtivo("1".charAt(0));
                         p.setNumeroSerie(txtNSeriePerifericoAlt.getText());
-                        sucesso=adicionarPeriferico(p, psEdicao, tablePerifericosAlt, tbAlt,true);    
+                        sucesso=adicionarPeriferico(p, psEdicao, tablePerifericosAlt, tbAlt,true,true);    
                         if (sucesso){
                             txtDescricaoPerifericoAlt.setText("");
                             txtNSeriePerifericoAlt.setText("");     
@@ -322,7 +337,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
                         p.setMarca(Long.valueOf(String.valueOf(cmbMarcaPeriferico.getSelectedItem().toString().subSequence(0, cmbMarcaPeriferico.getSelectedItem().toString().indexOf("-")))));
                         p.setAtivo("1".charAt(0));
                         p.setNumeroSerie(txtNSeriePeriferico.getText());
-                        sucesso=adicionarPeriferico(p, psNovo, tablePerifericos, tb,true);    
+                        sucesso=adicionarPeriferico(p, psNovo, tablePerifericos, tb,true,false);    
                         if (sucesso){
                             txtDescricaoPeriferico.setText("");
                             txtNSeriePeriferico.setText("");     
@@ -516,8 +531,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
         txtNSeriePeriferico.setText("");
         
         tb=new PerifericoTableModel();
-        psNovo.clear();        
-        listaIncluir.clear();        
+        psNovo.clear();                 
         tablePerifericos.setModel(tb);
         tablePerifericos.updateUI();
         tablePerifericos.repaint(); 
@@ -591,11 +605,11 @@ public class FrmEquipamento extends javax.swing.JDialog {
         tablePerifericosAlt.setModel(tb);
         tablePerifericosAlt.repaint();        
         for(Periferico p:perifericos){
-            adicionarPeriferico(p, psEdicao, tablePerifericosAlt, tbAlt,false);
+            adicionarPeriferico(p, psEdicao, tablePerifericosAlt, tbAlt,false,false);
         }
     }
     
-    private boolean adicionarPeriferico(Periferico p,List<Periferico> ps,JTable tabela, PerifericoTableModel tbMeu, boolean checarN){
+    private boolean adicionarPeriferico(Periferico p,List<Periferico> ps,JTable tabela, PerifericoTableModel tbMeu, boolean checarN,boolean opAlteracao){
         boolean incluir;
         incluir=true;
         try{
@@ -609,7 +623,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
                             if(pe.getId()>0){
                                 setInativar.add(pe.getId());
                             }                    
-                            if(listaIncluir.size()>0){
+                            if(listaIncluir.size()>0 && opAlteracao){
                                 if(listaIncluir.contains(pe)){
                                     listaIncluir.remove(pe);
                                 }
@@ -619,7 +633,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
                             break;
                         }
                     }
-                    if(p.getId()<=0){                    
+                    if(p.getId()<=0 & opAlteracao){                    
                         listaIncluir.add(p);                    
                     }
                     ps.add(p);
