@@ -52,6 +52,11 @@ public class PerifericoController implements ITodosController<Periferico> {
        dao=new PerifericoDAO();
        return dao.listar("Periferico"); 
     }
+
+    public void inativar(Long id) {
+        dao=new PerifericoDAO();
+        dao.inativar(id);
+    }
     
     
 }

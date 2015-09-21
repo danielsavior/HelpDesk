@@ -37,7 +37,7 @@ public class PerifericoDAO extends ATodosDAO<Periferico>{
               p.setTipo((String)vetorIt[2]);
               p.setMarca((long)vetorIt[3]);
               p.setDescricao((String)vetorIt[4]);
-              //p.setAtivo(((String)vetorIt[5]).charAt(0));
+              p.setAtivo((char) vetorIt[5]);
               p.setNumeroSerie((String)vetorIt[6]);
               
               //c.setStatus((char)vetorIt[6]);                            
@@ -61,9 +61,9 @@ public class PerifericoDAO extends ATodosDAO<Periferico>{
        Session session=null;
        Query query=null;
        StringBuilder s=new StringBuilder();
-       s.append("SELECT count(*) FROM Periferico  WHERE nserie= ");
+       s.append("SELECT count(*) FROM Periferico  WHERE nserie='");
        s.append( nSerie);
-       s.append( " and ativo=1 ");   
+       s.append( "' and ativo=1 ");   
        try{
            session=HibernateUtil.getSessionFactory().openSession();
            query=session.createQuery(s.toString());  
@@ -72,6 +72,21 @@ public class PerifericoDAO extends ATodosDAO<Periferico>{
            
        }
        return retorno;
+    }
+
+    public void inativar(Long id) {
+       Session session=null;
+       Query query=null;
+       StringBuilder s=new StringBuilder();
+       s.append("UPDATE Periferico SET ativo='0' WHERE id= ");
+       s.append(id);       
+       try{
+           session=HibernateUtil.getSessionFactory().openSession();
+           query=session.createQuery(s.toString());  
+           query.executeUpdate();
+       }catch(Exception e){
+           
+       }
     }
     
 }

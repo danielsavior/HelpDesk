@@ -623,7 +623,7 @@
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <EmptySpace min="-2" pref="290" max="-2" attributes="0"/>
                                                       <Component id="lblDataCompraAlt" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="0" pref="108" max="32767" attributes="0"/>
+                                                      <EmptySpace min="0" pref="71" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -692,7 +692,7 @@
                                   <Component id="txtIPAlt" linkSize="8" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtNumeroSerieAlt" linkSize="8" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="65" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="chkOfficeAlt" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblDataCompraAlt" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -839,7 +839,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lblTipoAltPeriferico" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cmbTipoAltPeriferico" min="-2" pref="103" max="-2" attributes="0"/>
+                                      <Component id="cmbTipoPerifericoAlt" min="-2" pref="103" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -879,7 +879,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cmbTipoAltPeriferico" linkSize="10" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbTipoPerifericoAlt" linkSize="10" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="txtDescricaoPerifericoAlt" linkSize="10" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="cmbMarcaPerifericoAlt" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="txtNSeriePerifericoAlt" linkSize="10" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -909,7 +909,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtDescricaoPerifericoAlt">
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cmbTipoAltPeriferico">
+                <Component class="javax.swing.JComboBox" name="cmbTipoPerifericoAlt">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="3">
