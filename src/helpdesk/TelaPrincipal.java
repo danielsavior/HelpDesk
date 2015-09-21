@@ -120,7 +120,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     FrmConsultaChamados f = new FrmConsultaChamados(TelaPrincipal.this,u);
-                    f.setLocation(200, 100);
+                    f.setLocation(300, 50);
                     f.show();
                 }
             });
