@@ -116,8 +116,16 @@ public class FrmEquipamento extends javax.swing.JDialog {
                     equipamento.setNumeroSerie(txtNumeroSerie.getText().toString());
                     equipamento.setIp(txtIP.getText().toString());                    
                     equipamento.setDataCompra(new SimpleDateFormat("yyyy-MM-dd").format(txtDataCompra.getDate()));
-                    new EquipamentoController().insert(equipamento);
+                    new EquipamentoController().insert(equipamento);                    
                     txtCodigo.setText(String.valueOf(Integer.valueOf(txtCodigo.getText())+1));
+                    if(psNovo.size()>0){
+                        PerifericoController pc= new PerifericoController();
+                        long idEquipamento=equipamento.getId();
+                        for (Periferico p:psNovo){
+                            p.setEquipamento(idEquipamento);
+                            pc.insert(p);
+                        }
+                    }                        
                     limparInclusao();
                 }catch(Exception e){                    
                     e.printStackTrace();
@@ -296,6 +304,43 @@ public class FrmEquipamento extends javax.swing.JDialog {
             }
         });
         
+        txtNSeriePeriferico.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                 if (e.getKeyCode()==10){
+                    try{
+                        boolean sucesso=false;
+                        Periferico p = new Periferico();                        
+                        p.setTipo(cmbTipoPeriferico.getSelectedItem().toString());
+                        p.setDescricao(txtDescricaoPeriferico.getText());
+                        p.setMarca(Long.valueOf(String.valueOf(cmbMarcaPeriferico.getSelectedItem().toString().subSequence(0, cmbMarcaPeriferico.getSelectedItem().toString().indexOf("-")))));
+                        p.setAtivo("1".charAt(0));
+                        p.setNumeroSerie(txtNSeriePeriferico.getText());
+                        sucesso=adicionarPeriferico(p, psNovo, tablePerifericos, tb,true);    
+                        if (sucesso){
+                            txtDescricaoPeriferico.setText("");
+                            txtNSeriePeriferico.setText("");     
+                        }
+                        ajustarTabelas();
+                    }catch(Exception ex){
+                        JOptionPane.showMessageDialog(null, "Verifique os dados do periferico!");
+                    }
+                    cmbTipoPeriferico.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                
+            }
+        });
+        
         tablePerifericosAlt.addMouseListener(new MouseListener() {
 
             @Override
@@ -336,6 +381,48 @@ public class FrmEquipamento extends javax.swing.JDialog {
             @Override
             public void mouseExited(MouseEvent e) {
                 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+        
+        tablePerifericos.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if(tablePerifericos.getRowCount()>=1){
+                    Periferico p=(Periferico)tb.getPeriferico(tablePerifericos.getSelectedRow(), tablePerifericos.getSelectedColumn());
+                    idAlterado=Integer.valueOf(String.valueOf(p.getId()));
+                    txtDescricaoPeriferico.setText(p.getDescricao());
+                    txtNSeriePeriferico.setText(p.getNumeroSerie());
+                    String marc="";
+                    for(int i=0;i<cmbMarcaPeriferico.getItemCount();i++){
+                        cmbMarcaPeriferico.setSelectedIndex(i);
+                        if(cmbMarcaPeriferico.getSelectedItem().toString().substring(0,cmbMarcaPeriferico.getSelectedItem().toString().indexOf("-")).equals(String.valueOf(p.getMarca()))){
+                            marc=cmbMarcaPeriferico.getSelectedItem().toString();                                
+                        }
+                    }
+                    cmbMarcaPeriferico.setSelectedItem(marc);                                                            
+                    cmbTipoPeriferico.setSelectedItem(p.getTipo());                    
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+               
             }
         });
     }
@@ -416,6 +503,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
         tablePerifericosAlt.repaint(); 
         ajustarTabelas();
         idAlterado=0;
+        cmbTipoPerifericoAlt.setEnabled(true);
     }
     private void limparInclusao(){        
         txtDescricao.setText("");
@@ -423,6 +511,18 @@ public class FrmEquipamento extends javax.swing.JDialog {
         txtIP.setText("");               
         txtDataCompra.setDate(null);
         chkOffice.setSelected(false);
+        
+        txtDescricaoPeriferico.setText("");
+        txtNSeriePeriferico.setText("");
+        
+        tb=new PerifericoTableModel();
+        psNovo.clear();        
+        listaIncluir.clear();        
+        tablePerifericos.setModel(tb);
+        tablePerifericos.updateUI();
+        tablePerifericos.repaint(); 
+        ajustarTabelas();
+        idAlterado=0;
     }
     private void buscaPorID(long id){
         try{
