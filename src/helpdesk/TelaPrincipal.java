@@ -137,7 +137,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent ae) {
                     FrmConsultaEquipamentos f= new FrmConsultaEquipamentos(TelaPrincipal.this, false);
-                    f.setLocation(200,100);
+                    f.setLocation(300,50);
                     f.show();                    
                 }
             });
@@ -145,7 +145,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent ae) {
                     FrmConsultaImpressora f= new FrmConsultaImpressora(TelaPrincipal.this, false);
-                    f.setLocation(200,100);
+                    f.setLocation(300,50);
                     f.show();                    
                 }
             });

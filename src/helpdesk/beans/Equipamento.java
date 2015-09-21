@@ -19,8 +19,7 @@ public class Equipamento implements IHaveID{
     @GeneratedValue
     private long id;
     private String descricao;
-    private String dataCompra;
-    //private long tipoEquipamento;
+    private String dataCompra;    
     private long fornecedor;
     private long sistemaOP;
     private long office;
@@ -28,6 +27,11 @@ public class Equipamento implements IHaveID{
     private long marca;
     private String numeroSerie;
     private long setor;
+    private String processador;
+    private String hdd;
+    private String memoria;
+    private String nomeUsuario;
+    private String nomeComputador;
     @Transient         
     private String nomeMarca;
     @Transient         
@@ -74,24 +78,7 @@ public class Equipamento implements IHaveID{
     public void setDataCompra(String dataCompra) {
         this.dataCompra = dataCompra;
     }
-
-    /**
-     * @return the tipoEquipamento
-     */
-//    public long getTipoEquipamento() {
-//        return tipoEquipamento;
-//    }
-//
-//    /**
-//     * @param tipoEquipamento the tipoEquipamento to set
-//     */
-//    public void setTipoEquipamento(long tipoEquipamento) {
-//        this.tipoEquipamento = tipoEquipamento;
-//    }
-
-    /**
-     * @return the fornecedor
-     */
+    
     public long getFornecedor() {
         return fornecedor;
     }
@@ -185,8 +172,7 @@ public class Equipamento implements IHaveID{
     public void setSetor(long setor) {
         this.setor = setor;
     }
-    //</editor-fold>
-
+    
     /**
      * @return the nomeMarca
      */
@@ -214,5 +200,78 @@ public class Equipamento implements IHaveID{
     public void setNomeSetor(String nomeSetor) {
         this.nomeSetor = nomeSetor;
     }
+
+    /**
+     * @return the processador
+     */
+    public String getProcessador() {
+        return processador;
+    }
+
+    /**
+     * @param processador the processador to set
+     */
+    public void setProcessador(String processador) {
+        this.processador = processador;
+    }
+
+    /**
+     * @return the hdd
+     */
+    public String getHdd() {
+        return hdd;
+    }
+
+    /**
+     * @param hdd the hdd to set
+     */
+    public void setHdd(String hdd) {
+        this.hdd = hdd;
+    }
+
+    /**
+     * @return the memoria
+     */
+    public String getMemoria() {
+        return memoria;
+    }
+
+    /**
+     * @param memoria the memoria to set
+     */
+    public void setMemoria(String memoria) {
+        this.memoria = memoria;
+    }
+
+    /**
+     * @return the nomeUsuario
+     */
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
+
+    /**
+     * @param nomeUsuario the nomeUsuario to set
+     */
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
+    }
+
+    /**
+     * @return the nomeComputador
+     */
+    public String getNomeComputador() {
+        return nomeComputador;
+    }
+
+    /**
+     * @param nomeComputador the nomeComputador to set
+     */
+    public void setNomeComputador(String nomeComputador) {
+        this.nomeComputador = nomeComputador;
+    }
+    //</editor-fold>
+
+    
 
 }
