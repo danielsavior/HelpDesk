@@ -33,5 +33,13 @@ $$
 
 alter table periferico add column nserie varchar(20), add constraint nserieUK unique(nserie) ;
 
+alter table Equipamento 
+add column processador varchar(30), 
+add column hdd varchar(30),
+add column memoria varchar(30),
+add column nomeUsuario varchar(100),
+add column nomeComputador varchar(100);
+
+
 
 
