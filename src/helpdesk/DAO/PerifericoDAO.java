@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 public class PerifericoDAO extends ATodosDAO<Periferico>{
 
@@ -82,10 +83,14 @@ public class PerifericoDAO extends ATodosDAO<Periferico>{
        s.append(id);       
        try{
            session=HibernateUtil.getSessionFactory().openSession();
+           Transaction t= session.beginTransaction();
            query=session.createQuery(s.toString());  
            query.executeUpdate();
+           t.commit();
        }catch(Exception e){
            
+       }finally{
+           session.close();
        }
     }
     

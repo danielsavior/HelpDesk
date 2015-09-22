@@ -310,7 +310,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
                         p.setMarca(Long.valueOf(String.valueOf(cmbMarcaPerifericoAlt.getSelectedItem().toString().subSequence(0, cmbMarcaPerifericoAlt.getSelectedItem().toString().indexOf("-")))));
                         p.setAtivo("1".charAt(0));
                         p.setNumeroSerie(txtNSeriePerifericoAlt.getText());
-                        sucesso=adicionarPeriferico(p, psEdicao, tablePerifericosAlt, tbAlt,true,true);    
+                        sucesso=adicionarPeriferico(p, psEdicao, tablePerifericosAlt, tbAlt,false,true);    
                         if (sucesso){
                             txtDescricaoPerifericoAlt.setText("");
                             txtNSeriePerifericoAlt.setText("");     
@@ -347,7 +347,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
                         p.setMarca(Long.valueOf(String.valueOf(cmbMarcaPeriferico.getSelectedItem().toString().subSequence(0, cmbMarcaPeriferico.getSelectedItem().toString().indexOf("-")))));
                         p.setAtivo("1".charAt(0));
                         p.setNumeroSerie(txtNSeriePeriferico.getText());
-                        sucesso=adicionarPeriferico(p, psNovo, tablePerifericos, tb,true,false);    
+                        sucesso=adicionarPeriferico(p, psNovo, tablePerifericos, tb,false,false);    
                         if (sucesso){
                             txtDescricaoPeriferico.setText("");
                             txtNSeriePeriferico.setText("");     
@@ -371,20 +371,29 @@ public class FrmEquipamento extends javax.swing.JDialog {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if(tablePerifericosAlt.getRowCount()>=1){
-                    Periferico p=(Periferico)tbAlt.getPeriferico(tablePerifericosAlt.getSelectedRow(), tablePerifericosAlt.getSelectedColumn());
-                    idAlterado=Integer.valueOf(String.valueOf(p.getId()));
-                    txtDescricaoPerifericoAlt.setText(p.getDescricao());
-                    txtNSeriePerifericoAlt.setText(p.getNumeroSerie());
-                    String marc="";
-                    for(int i=0;i<cmbMarcaPerifericoAlt.getItemCount();i++){
-                        cmbMarcaPerifericoAlt.setSelectedIndex(i);
-                        if(cmbMarcaPerifericoAlt.getSelectedItem().toString().substring(0,cmbMarcaPerifericoAlt.getSelectedItem().toString().indexOf("-")).equals(String.valueOf(p.getMarca()))){
-                            marc=cmbMarcaPerifericoAlt.getSelectedItem().toString();                                
+                    if(e.getClickCount()>=2){
+                        int resposta=0;
+                        resposta=JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esse item?");
+                        if(resposta==0){    
+                            Periferico p=(Periferico)tbAlt.getPeriferico(tablePerifericosAlt.getSelectedRow(), tablePerifericosAlt.getSelectedColumn());
+                            removerPeriferico(p, psEdicao, tablePerifericosAlt, tbAlt);
                         }
+                    }else{                    
+                        Periferico p=(Periferico)tbAlt.getPeriferico(tablePerifericosAlt.getSelectedRow(), tablePerifericosAlt.getSelectedColumn());
+                        idAlterado=Integer.valueOf(String.valueOf(p.getId()));
+                        txtDescricaoPerifericoAlt.setText(p.getDescricao());
+                        txtNSeriePerifericoAlt.setText(p.getNumeroSerie());
+                        String marc="";
+                        for(int i=0;i<cmbMarcaPerifericoAlt.getItemCount();i++){
+                            cmbMarcaPerifericoAlt.setSelectedIndex(i);
+                            if(cmbMarcaPerifericoAlt.getSelectedItem().toString().substring(0,cmbMarcaPerifericoAlt.getSelectedItem().toString().indexOf("-")).equals(String.valueOf(p.getMarca()))){
+                                marc=cmbMarcaPerifericoAlt.getSelectedItem().toString();                                
+                            }
+                        }
+                        cmbMarcaPerifericoAlt.setSelectedItem(marc);                                                            
+                        cmbTipoPerifericoAlt.setSelectedItem(p.getTipo());
+                        cmbTipoPerifericoAlt.setEnabled(false);
                     }
-                    cmbMarcaPerifericoAlt.setSelectedItem(marc);                                                            
-                    cmbTipoPerifericoAlt.setSelectedItem(p.getTipo());
-                    cmbTipoPerifericoAlt.setEnabled(false);
                 }
             }
 
@@ -414,19 +423,28 @@ public class FrmEquipamento extends javax.swing.JDialog {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if(tablePerifericos.getRowCount()>=1){
-                    Periferico p=(Periferico)tb.getPeriferico(tablePerifericos.getSelectedRow(), tablePerifericos.getSelectedColumn());
-                    idAlterado=Integer.valueOf(String.valueOf(p.getId()));
-                    txtDescricaoPeriferico.setText(p.getDescricao());
-                    txtNSeriePeriferico.setText(p.getNumeroSerie());
-                    String marc="";
-                    for(int i=0;i<cmbMarcaPeriferico.getItemCount();i++){
-                        cmbMarcaPeriferico.setSelectedIndex(i);
-                        if(cmbMarcaPeriferico.getSelectedItem().toString().substring(0,cmbMarcaPeriferico.getSelectedItem().toString().indexOf("-")).equals(String.valueOf(p.getMarca()))){
-                            marc=cmbMarcaPeriferico.getSelectedItem().toString();                                
+                    if(e.getClickCount()>=2){
+                        int resposta=0;
+                        resposta=JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esse item?");
+                        if(resposta==0){                        
+                            Periferico p=(Periferico)tb.getPeriferico(tablePerifericos.getSelectedRow(), tablePerifericos.getSelectedColumn());
+                            removerPeriferico(p, psNovo, tablePerifericos, tb);
                         }
+                    }else{                    
+                        Periferico p=(Periferico)tb.getPeriferico(tablePerifericos.getSelectedRow(), tablePerifericos.getSelectedColumn());
+                        idAlterado=Integer.valueOf(String.valueOf(p.getId()));
+                        txtDescricaoPeriferico.setText(p.getDescricao());
+                        txtNSeriePeriferico.setText(p.getNumeroSerie());
+                        String marc="";
+                        for(int i=0;i<cmbMarcaPeriferico.getItemCount();i++){
+                            cmbMarcaPeriferico.setSelectedIndex(i);
+                            if(cmbMarcaPeriferico.getSelectedItem().toString().substring(0,cmbMarcaPeriferico.getSelectedItem().toString().indexOf("-")).equals(String.valueOf(p.getMarca()))){
+                                marc=cmbMarcaPeriferico.getSelectedItem().toString();                                
+                            }
+                        }
+                        cmbMarcaPeriferico.setSelectedItem(marc);                                                            
+                        cmbTipoPeriferico.setSelectedItem(p.getTipo());                    
                     }
-                    cmbMarcaPeriferico.setSelectedItem(marc);                                                            
-                    cmbTipoPeriferico.setSelectedItem(p.getTipo());                    
                 }
             }
 
@@ -687,7 +705,16 @@ public class FrmEquipamento extends javax.swing.JDialog {
         
     }
     
-    
+    private void removerPeriferico(Periferico p,List<Periferico> ps,JTable tabela, PerifericoTableModel tbMeu){
+        if(p.getId()>0){
+            setInativar.add(p.getId());
+        }
+        ps.remove(p);
+        tbMeu.remove(p);
+        tabela.setModel(tbMeu);
+        tabela.updateUI();
+        tabela.repaint(); 
+    }
     
     private void ajustarTabelas(){
         tablePerifericos.getTableHeader().setReorderingAllowed(false);
@@ -980,11 +1007,12 @@ public class FrmEquipamento extends javax.swing.JDialog {
                             .addComponent(lblNumeroSerie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblMemoria))
                         .addGap(4, 4, 4)
-                        .addGroup(jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNumeroSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMemoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtHDD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtHDD, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtNumeroSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtMemoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(chkOffice, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1025,7 +1053,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
 
         lblNSeriePeriferico.setText("Nº de série:");
 
-        cmbTipoPeriferico.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Monitor", "Teclado", "Mouse" }));
+        cmbTipoPeriferico.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Monitor", "Teclado", "Mouse", "Monitor Auxiliar" }));
 
         tablePerifericos.setModel(tb);
         jScrollPane1.setViewportView(tablePerifericos);
@@ -1336,7 +1364,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
 
         lblNSerieAltPeriferico.setText("Nº de série:");
 
-        cmbTipoPerifericoAlt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Monitor", "Teclado", "Mouse" }));
+        cmbTipoPerifericoAlt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Monitor", "Teclado", "Mouse", "Monitor Auxiliar" }));
 
         txtNSeriePerifericoAlt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

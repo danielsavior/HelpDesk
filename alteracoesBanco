@@ -40,6 +40,14 @@ add column memoria varchar(30),
 add column nomeUsuario varchar(100),
 add column nomeComputador varchar(100);
 
+ALTER TABLE `helpdesk`.`periferico` 
+CHANGE COLUMN `nserie` `nserie` VARCHAR(20) NOT NULL ,
+DROP INDEX `nserieUK` ;
+
+ALTER TABLE `helpdesk`.`periferico` 
+CHANGE COLUMN `tipo` `tipo` ENUM('Monitor','Teclado','Mouse','Monitor Auxiliar') NOT NULL ;
+
+
 
 
 
