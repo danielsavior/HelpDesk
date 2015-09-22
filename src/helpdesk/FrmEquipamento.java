@@ -377,6 +377,9 @@ public class FrmEquipamento extends javax.swing.JDialog {
                         if(resposta==0){    
                             Periferico p=(Periferico)tbAlt.getPeriferico(tablePerifericosAlt.getSelectedRow(), tablePerifericosAlt.getSelectedColumn());
                             removerPeriferico(p, psEdicao, tablePerifericosAlt, tbAlt);
+                            cmbTipoPerifericoAlt.setEnabled(true);
+                            txtDescricaoPerifericoAlt.setText("");
+                            txtNSeriePerifericoAlt.setText("");
                         }
                     }else{                    
                         Periferico p=(Periferico)tbAlt.getPeriferico(tablePerifericosAlt.getSelectedRow(), tablePerifericosAlt.getSelectedColumn());
@@ -429,6 +432,9 @@ public class FrmEquipamento extends javax.swing.JDialog {
                         if(resposta==0){                        
                             Periferico p=(Periferico)tb.getPeriferico(tablePerifericos.getSelectedRow(), tablePerifericos.getSelectedColumn());
                             removerPeriferico(p, psNovo, tablePerifericos, tb);
+                            cmbTipoPeriferico.setEnabled(true);
+                            txtDescricaoPeriferico.setText("");
+                            txtNSeriePeriferico.setText("");
                         }
                     }else{                    
                         Periferico p=(Periferico)tb.getPeriferico(tablePerifericos.getSelectedRow(), tablePerifericos.getSelectedColumn());
