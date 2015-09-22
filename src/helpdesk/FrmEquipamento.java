@@ -48,6 +48,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 
 /**
@@ -68,6 +69,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
     private Map<Long,Periferico>mapAlterar=new HashMap<Long,Periferico>();
     private List<String>listaDeEquipamentos;    
     private Integer idAlterado;
+    private Frame meuParent;
     public FrmEquipamento(long codEquipamento){
         this(new Frame(),true);        
         tabEquipamento.setSelectedIndex(1);
@@ -77,6 +79,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
     public FrmEquipamento(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         idAlterado=0;
+        meuParent=parent;
         tb=new PerifericoTableModel();        
         tbAlt=new PerifericoTableModel();
         listaDeEquipamentos=new ArrayList<>();
@@ -86,7 +89,43 @@ public class FrmEquipamento extends javax.swing.JDialog {
         initComponents();  
         ajustarTabelas();
         
+        ActionListener ac= new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JComboBox jcb=(JComboBox)e.getSource();                                           
+                if(jcb.getSelectedItem().toString().equals("Novo...")){
+                    if(jcb==cmbFornecedor||jcb==cmbFornecedorAlt){
+                        FrmFornecedor f= new FrmFornecedor(meuParent, false);
+                        f.setLocation(300,100);
+                        f.show();                        
+                    }else if(jcb==cmbMarca || jcb==cmbMarcaAlt){
+                        FrmMarca f= new FrmMarca(meuParent, false);
+                        f.setLocation(300,100);
+                        f.show();                        
+                    }else if(jcb==cmbOffice || jcb==cmbOfficeAlt){
+                        FrmOffice f= new FrmOffice(meuParent, false);
+                        f.setLocation(300,100);
+                        f.show();                        
+                    }else if(jcb==cmbSistemaOP || jcb==cmbSistemaOPAlt){
+                        FrmSistemaOP f= new FrmSistemaOP(meuParent, false);
+                        f.setLocation(300,100);
+                        f.show();                        
+                    }
+                    carregaCombos();
+                }
+            }
+        };    
+                   
         
+        cmbFornecedor.addActionListener(ac);
+        cmbMarca.addActionListener(ac);        
+        cmbOffice.addActionListener(ac);        
+        cmbSistemaOP.addActionListener(ac);                
+        cmbFornecedorAlt.addActionListener(ac);
+        cmbMarcaAlt.addActionListener(ac);        
+        cmbOfficeAlt.addActionListener(ac);        
+        cmbSistemaOPAlt.addActionListener(ac);                                                      
         txtCodigo.setText(String.valueOf(Utilidades.retornarProximoID("Equipamento")));        
         carregaCombos();
         tabEquipamento.addChangeListener(new ChangeListener() {
@@ -390,7 +429,8 @@ public class FrmEquipamento extends javax.swing.JDialog {
                         for(int i=0;i<cmbMarcaPerifericoAlt.getItemCount();i++){
                             cmbMarcaPerifericoAlt.setSelectedIndex(i);
                             if(cmbMarcaPerifericoAlt.getSelectedItem().toString().substring(0,cmbMarcaPerifericoAlt.getSelectedItem().toString().indexOf("-")).equals(String.valueOf(p.getMarca()))){
-                                marc=cmbMarcaPerifericoAlt.getSelectedItem().toString();                                
+                                marc=cmbMarcaPerifericoAlt.getSelectedItem().toString();    
+                                break;
                             }
                         }
                         cmbMarcaPerifericoAlt.setSelectedItem(marc);                                                            
@@ -445,7 +485,8 @@ public class FrmEquipamento extends javax.swing.JDialog {
                         for(int i=0;i<cmbMarcaPeriferico.getItemCount();i++){
                             cmbMarcaPeriferico.setSelectedIndex(i);
                             if(cmbMarcaPeriferico.getSelectedItem().toString().substring(0,cmbMarcaPeriferico.getSelectedItem().toString().indexOf("-")).equals(String.valueOf(p.getMarca()))){
-                                marc=cmbMarcaPeriferico.getSelectedItem().toString();                                
+                                marc=cmbMarcaPeriferico.getSelectedItem().toString();  
+                                break;
                             }
                         }
                         cmbMarcaPeriferico.setSelectedItem(marc);                                                            
@@ -493,12 +534,16 @@ public class FrmEquipamento extends javax.swing.JDialog {
             cmbFornecedor.addItem(fornecedor.getId()+"-"+fornecedor.getDescricao());
             cmbFornecedorAlt.addItem(fornecedor.getId()+"-"+fornecedor.getDescricao());
         }
+        cmbFornecedor.addItem("Novo...");
+        cmbFornecedorAlt.addItem("Novo...");
         List<SistemaOP>sistemas;
         sistemas=new SistemaOPController().listar();
         for(SistemaOP sistema:sistemas){
             cmbSistemaOP.addItem(sistema.getId()+"-"+sistema.getDescricao());
             cmbSistemaOPAlt.addItem(sistema.getId()+"-"+sistema.getDescricao());
         }
+        cmbSistemaOP.addItem("Novo...");
+        cmbSistemaOPAlt.addItem("Novo...");
         List<Marca>marcas;
         marcas=new MarcaController().listar();
         for(Marca marca:marcas){
@@ -507,6 +552,10 @@ public class FrmEquipamento extends javax.swing.JDialog {
             cmbMarcaPerifericoAlt.addItem(marca.getId()+"-"+marca.getDescricao());
             cmbMarcaPeriferico.addItem(marca.getId()+"-"+marca.getDescricao());
         }
+        cmbMarca.addItem("Novo...");
+        cmbMarcaAlt.addItem("Novo...");
+        cmbMarcaPerifericoAlt.addItem("Novo...");
+        cmbMarcaPeriferico.addItem("Novo...");
         List<Setor>setores;
         setores=new SetorController().listar();
         for(Setor setor:setores){
@@ -541,6 +590,11 @@ public class FrmEquipamento extends javax.swing.JDialog {
         
         txtDescricaoPerifericoAlt.setText("");
         txtNSeriePerifericoAlt.setText("");
+        txtMemoriaAlt.setText("");
+        txtHDDAlt.setText("");
+        txtProcessadorAlt.setText("");
+        txtNomeEquipamentoAlt.setText("");
+        txtNomeUsuarioAlt.setText("");
         
         tbAlt=new PerifericoTableModel();
         psEdicao.clear();
@@ -563,7 +617,11 @@ public class FrmEquipamento extends javax.swing.JDialog {
         
         txtDescricaoPeriferico.setText("");
         txtNSeriePeriferico.setText("");
-        
+        txtMemoria.setText("");
+        txtHDD.setText("");
+        txtProcessador.setText("");
+        txtNomeEquipamento.setText("");
+        txtNomeUsuario.setText("");
         tb=new PerifericoTableModel();
         psNovo.clear();                 
         tablePerifericos.setModel(tb);
@@ -581,7 +639,8 @@ public class FrmEquipamento extends javax.swing.JDialog {
             for(int i=0;i<cmbFornecedorAlt.getItemCount();i++){
                 cmbFornecedorAlt.setSelectedIndex(i);
                 if(cmbFornecedorAlt.getSelectedItem().toString().substring(0,cmbFornecedorAlt.getSelectedItem().toString().indexOf("-")).equals(String.valueOf(u.getFornecedor()))){
-                    fornec=cmbFornecedorAlt.getSelectedItem().toString();                                
+                    fornec=cmbFornecedorAlt.getSelectedItem().toString();   
+                    break;
                 }
 
             }
@@ -589,7 +648,8 @@ public class FrmEquipamento extends javax.swing.JDialog {
             for(int i=0;i<cmbMarcaAlt.getItemCount();i++){
                 cmbMarcaAlt.setSelectedIndex(i);
                 if(cmbMarcaAlt.getSelectedItem().toString().substring(0,cmbMarcaAlt.getSelectedItem().toString().indexOf("-")).equals(String.valueOf(u.getMarca()))){
-                    marc=cmbMarcaAlt.getSelectedItem().toString();                                
+                    marc=cmbMarcaAlt.getSelectedItem().toString();     
+                    break;
                 }
 
             }
@@ -599,6 +659,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
                 cmbSistemaOPAlt.setSelectedIndex(i);
                 if(cmbSistemaOPAlt.getSelectedItem().toString().substring(0,cmbSistemaOPAlt.getSelectedItem().toString().indexOf("-")).equals(String.valueOf(u.getSistemaOP()))){
                     sisc=cmbSistemaOPAlt.getSelectedItem().toString();                                
+                    break;
                 }
 
             }
@@ -606,7 +667,8 @@ public class FrmEquipamento extends javax.swing.JDialog {
             for(int i=0;i<cmbSetorAlt.getItemCount();i++){
                 cmbSetorAlt.setSelectedIndex(i);
                 if(cmbSetorAlt.getSelectedItem().toString().substring(0,cmbSetorAlt.getSelectedItem().toString().indexOf("-")).equals(String.valueOf(u.getSetor()))){
-                    set=cmbSetorAlt.getSelectedItem().toString();                                
+                    set=cmbSetorAlt.getSelectedItem().toString();     
+                    break;
                 }
 
             }
@@ -620,7 +682,8 @@ public class FrmEquipamento extends javax.swing.JDialog {
                 for(int i=0;i<cmbOfficeAlt.getItemCount();i++){
                     cmbOfficeAlt.setSelectedIndex(i);
                     if(cmbOfficeAlt.getSelectedItem().toString().substring(0,cmbOfficeAlt.getSelectedItem().toString().indexOf("-")).equals(String.valueOf(u.getOffice()))){
-                        sisc=cmbOfficeAlt.getSelectedItem().toString();                                
+                        sisc=cmbOfficeAlt.getSelectedItem().toString();     
+                        break;
                     }
 
                 }
@@ -646,8 +709,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
         for(Periferico p:perifericos){
             adicionarPeriferico(p, psEdicao, tablePerifericosAlt, tbAlt,false,false);
         }
-    }
-    
+    }    
     private boolean adicionarPeriferico(Periferico p,List<Periferico> ps,JTable tabela, PerifericoTableModel tbMeu, boolean checarN,boolean opAlteracao){
         boolean incluir;
         incluir=true;
@@ -709,8 +771,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
         idAlterado=0;
         return true;
         
-    }
-    
+    }    
     private void removerPeriferico(Periferico p,List<Periferico> ps,JTable tabela, PerifericoTableModel tbMeu){
         if(p.getId()>0){
             setInativar.add(p.getId());
@@ -918,14 +979,14 @@ public class FrmEquipamento extends javax.swing.JDialog {
                         .addGroup(jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelCadEquipamentoLayout.createSequentialGroup()
                                 .addGroup(jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cmbFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblFornecedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanelCadEquipamentoLayout.createSequentialGroup()
-                                        .addComponent(lblFornecedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(lblMarca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(14, 14, 14))
+                                        .addGap(56, 56, 56))
                                     .addGroup(jPanelCadEquipamentoLayout.createSequentialGroup()
-                                        .addComponent(cmbFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(cmbMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(jPanelCadEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
