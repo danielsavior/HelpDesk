@@ -74,7 +74,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanelCadEquipamento" min="-2" pref="342" max="-2" attributes="0"/>
+                      <Component id="jPanelCadEquipamento" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanelCadPerifericos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -150,59 +150,55 @@
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="cmbSetor" linkSize="3" min="-2" pref="210" max="-2" attributes="0"/>
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Component id="txtNomeUsuario" min="-2" pref="280" max="-2" attributes="0"/>
-                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Component id="cmbSetor" linkSize="3" min="-2" pref="210" max="-2" attributes="0"/>
+                                                          <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                                                      </Group>
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Component id="cmbOffice" linkSize="3" min="-2" pref="167" max="-2" attributes="0"/>
+                                                          <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                                                      </Group>
+                                                      <Group type="102" attributes="0">
+                                                          <Component id="chkOffice" max="32767" attributes="0"/>
+                                                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                                      </Group>
                                                   </Group>
-                                                  <Group type="102" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                                  <Group type="102" alignment="0" attributes="0">
-                                                                      <Component id="cmbOffice" linkSize="3" min="-2" pref="167" max="-2" attributes="0"/>
-                                                                      <EmptySpace type="unrelated" max="32767" attributes="0"/>
-                                                                  </Group>
-                                                                  <Group type="102" attributes="0">
-                                                                      <Component id="chkOffice" max="32767" attributes="0"/>
-                                                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                                                  </Group>
-                                                              </Group>
-                                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                                  <Component id="lblProcessador" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="txtProcessador" min="-2" pref="280" max="-2" attributes="0"/>
-                                                              </Group>
-                                                          </Group>
-                                                          <Group type="102" attributes="0">
-                                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                                  <Group type="102" attributes="0">
-                                                                      <Component id="lblNumeroSerie" min="-2" pref="88" max="-2" attributes="0"/>
-                                                                      <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
-                                                                      <Component id="lblMemoria" min="-2" max="-2" attributes="0"/>
-                                                                  </Group>
-                                                                  <Group type="102" alignment="0" attributes="0">
-                                                                      <Component id="lblSetor" min="-2" max="-2" attributes="0"/>
-                                                                      <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
-                                                                      <Component id="lblUsuario" min="-2" max="-2" attributes="0"/>
-                                                                  </Group>
-                                                              </Group>
-                                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="txtNomeUsuario" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
+                                                      <Component id="txtProcessador" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Component id="txtNumeroSerie" linkSize="3" min="-2" pref="167" max="-2" attributes="0"/>
+                                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                          <Component id="txtMemoria" linkSize="15" min="-2" pref="137" max="-2" attributes="0"/>
+                                                          <EmptySpace max="-2" attributes="0"/>
+                                                          <Group type="103" groupAlignment="0" attributes="0">
+                                                              <Component id="lblHDD" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="txtHDD" linkSize="15" min="-2" max="-2" attributes="0"/>
                                                           </Group>
                                                       </Group>
-                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Group type="102" attributes="0">
+                                                          <EmptySpace min="220" pref="220" max="-2" attributes="0"/>
+                                                          <Component id="lblProcessador" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Group type="102" attributes="0">
+                                                          <Component id="lblNumeroSerie" min="-2" pref="88" max="-2" attributes="0"/>
+                                                          <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
+                                                          <Component id="lblMemoria" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Component id="lblSetor" min="-2" max="-2" attributes="0"/>
+                                                          <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
+                                                          <Component id="lblUsuario" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
                                                   </Group>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="txtNumeroSerie" linkSize="3" min="-2" pref="167" max="-2" attributes="0"/>
-                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                  <Component id="txtMemoria" linkSize="15" min="-2" pref="137" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="lblHDD" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="txtHDD" linkSize="15" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
+                                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="103" groupAlignment="0" attributes="0">

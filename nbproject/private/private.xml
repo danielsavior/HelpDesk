@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/daniel/NetBeansProjects/GitHub/HelpDesk/src/helpdesk/FrmLogin.java</file>
-            <file>file:/home/daniel/NetBeansProjects/GitHub/HelpDesk/src/helpdesk/beans/Equipamento.java</file>
-            <file>file:/home/daniel/NetBeansProjects/GitHub/HelpDesk/src/helpdesk/FrmEquipamento.java</file>
-            <file>file:/home/daniel/NetBeansProjects/GitHub/HelpDesk/src/helpdesk/DAO/ATodosDAO.java</file>
+            <file>file:/C:/Users/Admin/Documents/GitHub/HelpDesk/src/helpdesk/DAO/ATodosDAO.java</file>
+            <file>file:/C:/Users/Admin/Documents/GitHub/HelpDesk/src/helpdesk/controllers/PerifericoController.java</file>
+            <file>file:/C:/Users/Admin/Documents/GitHub/HelpDesk/src/helpdesk/FrmEquipamento.java</file>
+            <file>file:/C:/Users/Admin/Documents/GitHub/HelpDesk/src/helpdesk/DAO/PerifericoDAO.java</file>
+            <file>file:/C:/Users/Admin/Documents/GitHub/HelpDesk/src/helpdesk/FrmFornecedor.java</file>
+            <file>file:/C:/Users/Admin/Documents/GitHub/HelpDesk/src/helpdesk/TelaPrincipal.java</file>
         </group>
     </open-files>
 </project-private>

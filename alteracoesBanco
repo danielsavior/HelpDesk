@@ -47,6 +47,12 @@ DROP INDEX `nserieUK` ;
 ALTER TABLE `helpdesk`.`periferico` 
 CHANGE COLUMN `tipo` `tipo` ENUM('Monitor','Teclado','Mouse','Monitor Auxiliar') NOT NULL ;
 
+ALTER TABLE `helpdesk`.`Equipamento` 
+CHANGE COLUMN `processador` `processador` VARCHAR(30) NOT NULL DEFAULT '' ,
+CHANGE COLUMN `hdd` `hdd` VARCHAR(30) NOT NULL DEFAULT '' ,
+CHANGE COLUMN `memoria` `memoria` VARCHAR(30) NOT NULL DEFAULT '' ;
+
+
 
 
 
