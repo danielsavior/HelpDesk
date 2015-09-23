@@ -74,7 +74,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanelCadEquipamento" min="-2" max="-2" attributes="0"/>
+                      <Component id="jPanelCadEquipamento" min="-2" pref="342" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanelCadPerifericos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -157,45 +157,51 @@
                                                       <Component id="txtNomeUsuario" min="-2" pref="280" max="-2" attributes="0"/>
                                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                                   </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="chkOffice" max="32767" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="lblProcessador" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="220" max="-2" attributes="0"/>
-                                                  </Group>
                                                   <Group type="102" attributes="0">
                                                       <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="cmbOffice" linkSize="3" min="-2" pref="167" max="-2" attributes="0"/>
-                                                          <Group type="102" attributes="0">
-                                                              <Component id="lblNumeroSerie" min="-2" pref="88" max="-2" attributes="0"/>
-                                                              <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
-                                                              <Component id="lblMemoria" min="-2" max="-2" attributes="0"/>
+                                                          <Group type="102" alignment="0" attributes="0">
+                                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                                  <Group type="102" alignment="0" attributes="0">
+                                                                      <Component id="cmbOffice" linkSize="3" min="-2" pref="167" max="-2" attributes="0"/>
+                                                                      <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                                                                  </Group>
+                                                                  <Group type="102" attributes="0">
+                                                                      <Component id="chkOffice" max="32767" attributes="0"/>
+                                                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                                                  </Group>
+                                                              </Group>
+                                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                                  <Component id="lblProcessador" min="-2" max="-2" attributes="0"/>
+                                                                  <Component id="txtProcessador" min="-2" pref="280" max="-2" attributes="0"/>
+                                                              </Group>
                                                           </Group>
-                                                          <Component id="lblSetor" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Group type="102" attributes="0">
+                                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                                  <Group type="102" attributes="0">
+                                                                      <Component id="lblNumeroSerie" min="-2" pref="88" max="-2" attributes="0"/>
+                                                                      <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
+                                                                      <Component id="lblMemoria" min="-2" max="-2" attributes="0"/>
+                                                                  </Group>
+                                                                  <Group type="102" alignment="0" attributes="0">
+                                                                      <Component id="lblSetor" min="-2" max="-2" attributes="0"/>
+                                                                      <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
+                                                                      <Component id="lblUsuario" min="-2" max="-2" attributes="0"/>
+                                                                  </Group>
+                                                              </Group>
+                                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                          </Group>
                                                       </Group>
                                                       <EmptySpace max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="txtNumeroSerie" linkSize="3" min="-2" pref="167" max="-2" attributes="0"/>
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Component id="txtMemoria" linkSize="15" min="-2" pref="137" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="lblHDD" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="txtHDD" linkSize="15" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="txtProcessador" min="-2" pref="280" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <Component id="lblUsuario" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="240" max="-2" attributes="0"/>
-                                                      </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="txtNumeroSerie" linkSize="3" min="-2" pref="167" max="-2" attributes="0"/>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <Component id="txtMemoria" linkSize="15" min="-2" pref="137" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="lblHDD" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="txtHDD" linkSize="15" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -313,6 +319,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtDescricao">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new AutoCompleteTextField(5,false,listaDeEquipamentos)"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cmbFornecedor">
                   <Properties>
@@ -406,10 +415,19 @@
                 <Component class="com.toedter.calendar.JDateChooser" name="txtDataCompra">
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtMemoria">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new AutoCompleteTextField(5,false,listaDeMemorias)"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtHDD">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new AutoCompleteTextField(5,false,listaDeHDDs)"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtProcessador">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new AutoCompleteTextField(5,false,listaDeProcessadores)"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblMemoria">
                   <Properties>
@@ -981,6 +999,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtMemoriaAlt">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new AutoCompleteTextField(5,false,listaDeMemorias)"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblMemoriaAlt">
                       <Properties>
@@ -993,6 +1014,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtHDDAlt">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new AutoCompleteTextField(5,false,listaDeHDDs)"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblProcessadorAlt">
                       <Properties>
@@ -1000,6 +1024,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtProcessadorAlt">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new AutoCompleteTextField(5,false,listaDeProcessadores)"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblUsuarioAlt">
                       <Properties>
