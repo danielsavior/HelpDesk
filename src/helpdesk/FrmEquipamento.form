@@ -706,92 +706,85 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblUsuarioAlt" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtNomeUsuarioAlt" linkSize="23" min="-2" pref="291" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblNomeEquipamentoAlt" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtNomeEquipamentoAlt" min="-2" pref="186" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="lblNumeroSerieAlt" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chkOfficeAlt" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtNumeroSerieAlt" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="cmbOfficeAlt" alignment="0" pref="197" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="txtProcessadorAlt" linkSize="23" min="-2" pref="290" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="txtDataCompraAlt" linkSize="9" min="-2" pref="183" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="lblProcessadorAlt" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="txtMemoriaAlt" min="-2" pref="133" max="-2" attributes="0"/>
+                                                  <Component id="lblMemoriaAlt" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                                      <Component id="lblHDDAlt" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="txtHDDAlt" min="-2" pref="143" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblFornecedorAlt" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cmbFornecedorAlt" min="-2" pref="197" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="lblMarcaAlt" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace pref="253" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="cmbMarcaAlt" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblDataCompraAlt" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="lblSitemaOPAlt" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblIPAlt" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cmbSistemaOPAlt" linkSize="9" alignment="1" pref="186" max="32767" attributes="0"/>
+                                              <Component id="txtIPAlt" alignment="1" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="txtCodigoAlt" min="-2" pref="73" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
                                               <Component id="lblDescricaoAlt" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="lblUsuarioAlt" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="txtNomeUsuarioAlt" linkSize="23" min="-2" pref="291" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="lblNomeEquipamentoAlt" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="txtNomeEquipamentoAlt" min="-2" pref="186" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="txtDescricaoAlt" max="32767" attributes="0"/>
                                       </Group>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="lblNumeroSerieAlt" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="chkOfficeAlt" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="txtNumeroSerieAlt" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="cmbOfficeAlt" alignment="0" pref="197" max="32767" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="txtProcessadorAlt" linkSize="23" min="-2" pref="290" max="-2" attributes="0"/>
-                                                      <EmptySpace max="32767" attributes="0"/>
-                                                      <Component id="txtDataCompraAlt" linkSize="9" min="-2" pref="183" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Component id="lblProcessadorAlt" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="txtMemoriaAlt" min="-2" pref="133" max="-2" attributes="0"/>
-                                                          <Component id="lblMemoriaAlt" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Group type="102" attributes="0">
-                                                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                                              <Component id="lblHDDAlt" min="-2" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                              <Component id="txtHDDAlt" min="-2" pref="143" max="-2" attributes="0"/>
-                                                          </Group>
-                                                      </Group>
-                                                  </Group>
-                                              </Group>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="txtCodigoAlt" min="-2" pref="73" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="txtDescricaoAlt" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="lblFornecedorAlt" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="cmbFornecedorAlt" min="-2" pref="197" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="lblMarcaAlt" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace pref="253" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Component id="cmbMarcaAlt" alignment="0" max="32767" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="lblDataCompraAlt" min="-2" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="lblSitemaOPAlt" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="lblIPAlt" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="cmbSistemaOPAlt" linkSize="9" alignment="1" pref="186" max="32767" attributes="0"/>
-                                                      <Component id="txtIPAlt" alignment="1" max="32767" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
