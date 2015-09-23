@@ -211,7 +211,8 @@ public class FrmUsuarios extends javax.swing.JDialog {
             for(int i=0;i<cmbSetorAlt.getItemCount();i++){
                 cmbSetorAlt.setSelectedIndex(i);
                 if(cmbSetorAlt.getSelectedItem().toString().substring(0,cmbSetorAlt.getSelectedItem().toString().indexOf("-")).equals(String.valueOf(u.getIdsetor()))){
-                    set=cmbSetorAlt.getSelectedItem().toString();                                
+                    set=cmbSetorAlt.getSelectedItem().toString();  
+                    break;
                 }
 
             }
@@ -322,7 +323,7 @@ public class FrmUsuarios extends javax.swing.JDialog {
                 .addGroup(jPanelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCadUserLayout.createSequentialGroup()
                         .addGap(134, 134, 134)
-                        .addComponent(btnGravarUser, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                        .addComponent(btnGravarUser, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
                         .addGap(20, 20, 20))
                     .addGroup(jPanelCadUserLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -363,7 +364,7 @@ public class FrmUsuarios extends javax.swing.JDialog {
                 .addGroup(jPanelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblPerfil)
                     .addComponent(cmbPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnGravarUser)
                 .addContainerGap())
         );
@@ -374,15 +375,15 @@ public class FrmUsuarios extends javax.swing.JDialog {
             painelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelCadUserLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelCadUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelCadUser, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
                 .addContainerGap())
         );
         painelCadUserLayout.setVerticalGroup(
             painelCadUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelCadUserLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelCadUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanelCadUser, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         tabCadUser.addTab("Cadastro", painelCadUser);
@@ -466,7 +467,7 @@ public class FrmUsuarios extends javax.swing.JDialog {
                     .addComponent(cmbSetorAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSetorAlt))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblPerfilAlt)
                     .addComponent(cmbPerfilAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -499,7 +500,7 @@ public class FrmUsuarios extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabCadUser)
+            .addComponent(tabCadUser, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

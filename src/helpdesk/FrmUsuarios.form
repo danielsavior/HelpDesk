@@ -25,7 +25,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="tabCadUser" alignment="0" max="32767" attributes="0"/>
+          <Component id="tabCadUser" alignment="0" pref="474" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -58,7 +58,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="jPanelCadUser" max="32767" attributes="0"/>
+                      <Component id="jPanelCadUser" pref="442" max="32767" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -67,8 +67,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanelCadUser" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jPanelCadUser" min="-2" pref="264" max="-2" attributes="0"/>
+                      <EmptySpace pref="26" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -120,7 +120,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
-                                  <Component id="btnGravarUser" pref="69" max="32767" attributes="0"/>
+                                  <Component id="btnGravarUser" pref="104" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -174,7 +174,7 @@
                               <Component id="lblPerfil" min="-2" max="-2" attributes="0"/>
                               <Component id="cmbPerfil" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="11" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="btnGravarUser" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -364,9 +364,9 @@
                               <Component id="lblSetorAlt" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblPerfilAlt" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cmbPerfilAlt" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbPerfilAlt" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
