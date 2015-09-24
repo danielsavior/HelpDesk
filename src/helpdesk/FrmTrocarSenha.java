@@ -6,6 +6,7 @@
 package helpdesk;
 
 import helpdesk.beans.Usuario;
+import helpdesk.controllers.UsuarioController;
 import helpdesk.utils.Utilidades;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,8 +35,16 @@ public class FrmTrocarSenha extends javax.swing.JDialog {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(usuario.getSenha()!=Utilidades.criptografarSenha(txtSenhaAtual.getText().toString())){
+                if(!usuario.getSenha().equals(Utilidades.criptografarSenha(txtSenhaAtual.getText().toString()))){
                     JOptionPane.showMessageDialog(null, "Senha atual não confere!");
+                }else{
+                    UsuarioController uc =new UsuarioController();
+                    usuario.setSenha(Utilidades.criptografarSenha(txtSenhaNova.getText().toString()));
+                    uc.update(usuario);
+                    txtNome.setText("");
+                    txtSenhaAtual.setText("");
+                    txtSenhaNova.setText("");
+                    JOptionPane.showMessageDialog(null, "Sua senha foi alterada com sucesso!");
                 }
             }
         });
@@ -54,10 +63,10 @@ public class FrmTrocarSenha extends javax.swing.JDialog {
         lblNome = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         lblSenhaAtual = new javax.swing.JLabel();
-        txtSenhaAtual = new javax.swing.JTextField();
         lblSenhaNova = new javax.swing.JLabel();
-        txtSenhaNova = new javax.swing.JTextField();
         btnGravar = new javax.swing.JButton();
+        txtSenhaAtual = new javax.swing.JPasswordField();
+        txtSenhaNova = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -81,6 +90,9 @@ public class FrmTrocarSenha extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(panelTrocaSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtNome)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTrocaSenhaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnGravar))
                     .addGroup(panelTrocaSenhaLayout.createSequentialGroup()
                         .addGroup(panelTrocaSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNome)
@@ -92,10 +104,7 @@ public class FrmTrocarSenha extends javax.swing.JDialog {
                     .addGroup(panelTrocaSenhaLayout.createSequentialGroup()
                         .addComponent(txtSenhaAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtSenhaNova))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTrocaSenhaLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnGravar)))
+                        .addComponent(txtSenhaNova)))
                 .addContainerGap())
         );
         panelTrocaSenhaLayout.setVerticalGroup(
@@ -113,7 +122,7 @@ public class FrmTrocarSenha extends javax.swing.JDialog {
                 .addGroup(panelTrocaSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSenhaAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSenhaNova, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(11, 11, 11)
                 .addComponent(btnGravar))
         );
 
@@ -186,7 +195,7 @@ public class FrmTrocarSenha extends javax.swing.JDialog {
     private javax.swing.JLabel lblSenhaNova;
     private javax.swing.JPanel panelTrocaSenha;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtSenhaAtual;
-    private javax.swing.JTextField txtSenhaNova;
+    private javax.swing.JPasswordField txtSenhaAtual;
+    private javax.swing.JPasswordField txtSenhaNova;
     // End of variables declaration//GEN-END:variables
 }

@@ -57,6 +57,10 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="txtNome" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="btnGravar" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblNome" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -72,10 +76,6 @@
                           <Component id="txtSenhaAtual" min="-2" pref="163" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="txtSenhaNova" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="btnGravar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -99,7 +99,7 @@
                       <Component id="txtSenhaAtual" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtSenhaNova" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                   <Component id="btnGravar" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -121,19 +121,19 @@
             <Property name="text" type="java.lang.String" value="Senha atual:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtSenhaAtual">
-        </Component>
         <Component class="javax.swing.JLabel" name="lblSenhaNova">
           <Properties>
             <Property name="text" type="java.lang.String" value="Senha nova:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtSenhaNova">
-        </Component>
         <Component class="javax.swing.JButton" name="btnGravar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Gravar"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="txtSenhaAtual">
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="txtSenhaNova">
         </Component>
       </SubComponents>
     </Container>
