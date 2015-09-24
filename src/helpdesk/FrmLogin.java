@@ -48,8 +48,30 @@ public class FrmLogin extends javax.swing.JDialog {
             }
 
             @Override
-            public void focusLost(FocusEvent e) {
+            public void focusLost(FocusEvent e) {                
                 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+        
+        
+        txtLogin.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==10&&!txtLogin.getText().equals("")){
+                    UsuarioController uc =new UsuarioController();
+                    lblNome.setText(uc.buscarPorLogin(txtLogin.getText().toString()));
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                
             }
         });
         txtSenha.addKeyListener(new KeyListener() {
@@ -63,7 +85,7 @@ public class FrmLogin extends javax.swing.JDialog {
             public void keyPressed(KeyEvent ke) {
                 if(ke.getKeyCode()==10){
                     try{
-                    validarLogin();
+                        validarLogin();
                     }catch(Exception e){
                         e.printStackTrace();
                     }
@@ -124,6 +146,7 @@ public class FrmLogin extends javax.swing.JDialog {
         txtSenha = new javax.swing.JPasswordField();
         lblInformacao = new java.awt.Label();
         btnSair = new javax.swing.JButton();
+        lblNome = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Formulário de Login");
@@ -137,34 +160,38 @@ public class FrmLogin extends javax.swing.JDialog {
 
         lblSenha.setText("Senha:");
 
+        lblInformacao.setAlignment(java.awt.Label.CENTER);
         lblInformacao.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         lblInformacao.setText("Efetuar Login");
 
         btnSair.setText("Sair");
 
+        lblNome.setText("-");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnSair)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEfetuarLogin))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblLogin)
-                            .addComponent(lblSenha))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
-                            .addComponent(txtSenha)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(83, 83, 83)
-                                .addComponent(lblInformacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addComponent(btnSair)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnEfetuarLogin))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblLogin)
+                                    .addComponent(lblSenha))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblInformacao, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 2, Short.MAX_VALUE))
+                    .addComponent(lblNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -180,11 +207,13 @@ public class FrmLogin extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSenha)
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblNome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEfetuarLogin)
                     .addComponent(btnSair))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -263,6 +292,7 @@ public class FrmLogin extends javax.swing.JDialog {
     private javax.swing.JButton btnSair;
     private java.awt.Label lblInformacao;
     private javax.swing.JLabel lblLogin;
+    private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JTextField txtLogin;
     private javax.swing.JPasswordField txtSenha;

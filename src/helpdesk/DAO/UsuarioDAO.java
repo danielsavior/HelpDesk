@@ -78,5 +78,21 @@ public class UsuarioDAO extends ATodosDAO<Usuario> implements IUsuarioDAO  {
             return null;
         }
     }
+
+    public String buscarPorLogin(String login) {
+        try{
+            StringBuilder sb=new StringBuilder();
+            sb.append("Select nomeCompleto FROM Usuario WHERE login='");
+            sb.append(login);
+            sb.append("'");
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            Query query=session.createQuery(sb.toString());                                    
+            String nome = (String)query.list().get(0);            
+            return nome;
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
     
 }

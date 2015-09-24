@@ -45,6 +45,11 @@ public class UsuarioController implements IUsuarioController, ITodosController<U
     public List<Usuario> buscarPorNome(String nome) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+    
+    public String buscarPorLogin(String login) {
+        dao=new UsuarioDAO();
+        return dao.buscarPorLogin(login);
+    }
 
     @Override
     public List<Usuario> listar() {
