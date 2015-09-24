@@ -99,6 +99,11 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="menuTrocarSenha">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Alterar senha"/>
+          </Properties>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="menuSair">
           <Properties>
             <Property name="text" type="java.lang.String" value="Sair"/>

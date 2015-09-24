@@ -31,9 +31,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuFecharChamado.setVisible(String.valueOf(usuario.getPerfil()).equals("1")||String.valueOf(usuario.getPerfil()).equals("3"));
         menuConsultas.setVisible(String.valueOf(usuario.getPerfil()).equals("1")||String.valueOf(usuario.getPerfil()).equals("3"));        
         menuCadastro.setVisible(String.valueOf(usuario.getPerfil()).equals("1")||String.valueOf(usuario.getPerfil()).equals("3"));        
+        menuTrocarSenha.setVisible(String.valueOf(usuario.getPerfil()).equals("2"));        
         try{
             u=usuario;
-            this.setTitle("Sistema HelpDesk Versão 1.0 " +usuario.getPerfil());
+            this.setTitle("Sistema HelpDesk Versão 1.0 " +usuario.getPerfil()+" "+usuario.getNomeCompleto());
             menuCadForncedor.addActionListener(new ActionListener() {
 
                 @Override
@@ -157,6 +158,36 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     f.show();                    
                 }
             });
+            
+            menuTrocarSenha.addMouseListener(new MouseListener() {
+
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    FrmTrocarSenha f=new FrmTrocarSenha(TelaPrincipal.this, false, u);
+                    f.setLocation(300, 50);
+                    f.show();
+                }
+
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    
+                }
+
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                    
+                }
+
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    
+                }
+            });
                                     
             menuSair.addMouseListener(new MouseListener() {
 
@@ -226,6 +257,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuConsultas = new javax.swing.JMenu();
         menuConsultaEquip = new javax.swing.JMenuItem();
         menuConsultaImpressoras = new javax.swing.JMenuItem();
+        menuTrocarSenha = new javax.swing.JMenu();
         menuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -289,6 +321,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuConsultas.add(menuConsultaImpressoras);
 
         jMenuBar1.add(menuConsultas);
+
+        menuTrocarSenha.setText("Alterar senha");
+        jMenuBar1.add(menuTrocarSenha);
 
         menuSair.setText("Sair");
         jMenuBar1.add(menuSair);
@@ -367,5 +402,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menuConsultas;
     private javax.swing.JMenuItem menuFecharChamado;
     private javax.swing.JMenu menuSair;
+    private javax.swing.JMenu menuTrocarSenha;
     // End of variables declaration//GEN-END:variables
 }
