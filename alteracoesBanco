@@ -54,6 +54,30 @@ CHANGE COLUMN `memoria` `memoria` VARCHAR(30) NOT NULL DEFAULT '' ;
 
 
 
+alter table Equipamento add 
+CONSTRAINT `fk_Equipamento_Fornecedor1` FOREIGN KEY (`fornecedor`) REFERENCES `Fornecedor` (`id`);
+alter table Equipamento add 
+CONSTRAINT `fk_Equipamento_SistemaOP1` FOREIGN KEY (`sistemaOP`) REFERENCES `SistemaOP` (`id`);
+alter table Equipamento add 
+CONSTRAINT `fk_Equipamento_Marca1` FOREIGN KEY (`marca`) REFERENCES `Marca` (`id`);
+alter table Equipamento add 
+CONSTRAINT `fk_Equipamento_Setor1` FOREIGN KEY (`setor`) REFERENCES `Setor` (`id`);
+
+alter table Chamado add 
+CONSTRAINT `fk_Chamado_Usuario1` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`id`);
+alter table Chamado add 
+CONSTRAINT `fk_Chamado_Problema1` FOREIGN KEY (`problema`) REFERENCES `Problema` (`id`);
+
+
+CREATE TABLE `empresa` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descricao` varchar(100) DEFAULT NULL,  
+  PRIMARY KEY (`id`)
+) ;
+
+alter table Setor add column empresa int(11), 
+add KEY `fk_Setor_empresa1` (`empresa`);
+
 
 
 
