@@ -18,33 +18,28 @@ public class Setor implements IHaveID{
     @GeneratedValue
     private long id;
     private String descricao;
-    //<editor-fold desc="Encapsulamento de campos">
-    /**
-     * @return the id
-     */
+    private long empresa;
+    //<editor-fold desc="Encapsulamento de campos">    
     public long getId() {
         return id;
     }
-
-    /**
-     * @param id the id to set
-     */
     public void setId(long id) {
         this.id = id;
     }
-
-    /**
-     * @return the descricao
-     */
     public String getDescricao() {
         return descricao;
     }
-
-    /**
-     * @param descricao the descricao to set
-     */
     public void setDescricao(String descricao) {
-        this.descricao = descricao;
+        this.descricao = descricao;            
+    }        
+    public long getEmpresa() {
+        return empresa;
+    }    
+    public void setEmpresa(long empresa) {
+        this.empresa = empresa;
     }
     //</editor-fold>
+
+    
+    
 }

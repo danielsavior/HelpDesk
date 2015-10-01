@@ -43,6 +43,7 @@ public class HibernateUtil {
                 ac.addAnnotatedClass(Office.class);
                 ac.addAnnotatedClass(Impressora.class);
                 ac.addAnnotatedClass(Periferico.class);
+                ac.addAnnotatedClass(Empresa.class);
                 
                 sessionFactory = ac.configure(f).buildSessionFactory();
                 

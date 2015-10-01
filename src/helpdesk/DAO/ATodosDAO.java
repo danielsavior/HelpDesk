@@ -41,8 +41,8 @@ public abstract class ATodosDAO <T>{
             session.close();
         }
     }
-    abstract T buscaPorID(long id);
-    abstract List<T> buscaPorNome(String nome);
+    public abstract T buscaPorID(long id);
+    public abstract List<T> buscaPorNome(String nome);
     public List<T> listar(String tabela){ 
         try{
             Session session = HibernateUtil.getSessionFactory().openSession();
