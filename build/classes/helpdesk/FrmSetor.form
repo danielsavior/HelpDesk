@@ -102,7 +102,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Component id="txtCodigo" min="-2" pref="73" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="258" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="259" max="32767" attributes="0"/>
                                       </Group>
                                       <Component id="txtDescricao" alignment="0" max="32767" attributes="0"/>
                                       <Component id="cmbEmpresa" max="32767" attributes="0"/>
@@ -235,29 +235,30 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblDescricaoAlt" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblCodigoAlt" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="txtCodigoAlt" min="-2" pref="73" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="267" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Component id="txtDescricaoAlt" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
                                   <Component id="lblEmpresaAlt" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cmbEmpresaAlt" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="cmbEmpresaAlt" linkSize="3" min="-2" pref="339" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnGravarSetorAlt" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lblDescricaoAlt" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblCodigoAlt" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtCodigoAlt" min="-2" pref="73" max="-2" attributes="0"/>
+                                              <Component id="txtDescricaoAlt" linkSize="3" min="-2" pref="340" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btnGravarSetorAlt" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -270,16 +271,16 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblCodigoAlt" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtCodigoAlt" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtCodigoAlt" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblDescricaoAlt" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtDescricaoAlt" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtDescricaoAlt" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cmbEmpresaAlt" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbEmpresaAlt" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblEmpresaAlt" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -330,6 +331,7 @@
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="0"/>
                     </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
               </SubComponents>

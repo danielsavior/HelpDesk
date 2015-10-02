@@ -62,6 +62,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     f.show();
                 }
             });
+            menuCadEmpresa.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent ae) {
+                    FrmEmpresa f= new FrmEmpresa(TelaPrincipal.this,false);
+                    f.setLocation(300,100);
+                    f.show();
+                }
+            });
             menuCadSetor.addActionListener(new ActionListener() {
 
                 @Override
@@ -243,6 +252,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuCadastro = new javax.swing.JMenu();
         menuCadEquip = new javax.swing.JMenuItem();
         menuCadForncedor = new javax.swing.JMenuItem();
+        menuCadEmpresa = new javax.swing.JMenuItem();
         menuCadSetor = new javax.swing.JMenuItem();
         menuCadMarca = new javax.swing.JMenuItem();
         menuCadOffice = new javax.swing.JMenuItem();
@@ -269,6 +279,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         menuCadForncedor.setText("Fornecedores");
         menuCadastro.add(menuCadForncedor);
+
+        menuCadEmpresa.setText("Empresas");
+        menuCadastro.add(menuCadEmpresa);
 
         menuCadSetor.setText("Setores");
         menuCadastro.add(menuCadSetor);
@@ -385,6 +398,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem menuAbrirChamado;
+    private javax.swing.JMenuItem menuCadEmpresa;
     private javax.swing.JMenuItem menuCadEquip;
     private javax.swing.JMenuItem menuCadForncedor;
     private javax.swing.JMenuItem menuCadImpressoras;

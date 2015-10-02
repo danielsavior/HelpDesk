@@ -5,6 +5,7 @@
 package helpdesk.utils;
 
 import helpdesk.beans.Chamado;
+import helpdesk.beans.Empresa;
 import helpdesk.beans.Equipamento;
 import helpdesk.beans.Fornecedor;
 import helpdesk.beans.IHaveID;
@@ -95,6 +96,10 @@ public final class Utilidades {
                 case"Impressora":
                     query=session.createQuery("FROM Impressora ORDER BY id DESC LIMIT 1");
                     h=(Impressora)query.list().get(0);
+                break;
+                case"Empresa":
+                    query=session.createQuery("FROM Empresa ORDER BY id DESC LIMIT 1");
+                    h=(Empresa)query.list().get(0);
                 break;
             }
 

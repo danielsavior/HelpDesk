@@ -19,6 +19,11 @@
                 <Property name="text" type="java.lang.String" value="Fornecedores"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuCadEmpresa">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Empresas"/>
+              </Properties>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuCadSetor">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Setores"/>

@@ -31,7 +31,8 @@ public class EmpresaController implements ITodosController<Empresa>{
 
     @Override
     public Empresa buscarPorID(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        dao=new EmpresaDAO();
+        return dao.buscaPorID(id);
     }
 
     @Override
