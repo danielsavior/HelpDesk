@@ -375,7 +375,7 @@ public class FrmChamado extends javax.swing.JDialog {
 
             painelAbreChm.setBackground(java.awt.Color.lightGray);
 
-            lblCodigo.setText("Código");
+            lblCodigo.setText("Código:");
 
             txtCodigo.setText("1");
             txtCodigo.setEnabled(false);
@@ -400,59 +400,66 @@ public class FrmChamado extends javax.swing.JDialog {
             painelAbreChm.setLayout(painelAbreChmLayout);
             painelAbreChmLayout.setHorizontalGroup(
                 painelAbreChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAbreChmLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(painelAbreChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtDataAbertura, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblDataAbertura))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnGravarChamado)
+                    .addContainerGap())
                 .addGroup(painelAbreChmLayout.createSequentialGroup()
                     .addGap(10, 10, 10)
                     .addGroup(painelAbreChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(painelAbreChmLayout.createSequentialGroup()
-                            .addGroup(painelAbreChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblProblema)
-                                .addComponent(lblPrioridade))
-                            .addGap(4, 4, 4)
-                            .addGroup(painelAbreChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cmbProblema, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cmbPrioridade, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1)
+                            .addContainerGap())
                         .addGroup(painelAbreChmLayout.createSequentialGroup()
-                            .addComponent(txtDataAbertura, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(290, 290, 290)
-                            .addComponent(btnGravarChamado))
-                        .addComponent(lblDataAbertura)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblDescricao)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblCodigo))
-                    .addGap(97, 97, 97))
+                            .addGroup(painelAbreChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblDescricao)
+                                .addGroup(painelAbreChmLayout.createSequentialGroup()
+                                    .addGroup(painelAbreChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblProblema)
+                                        .addComponent(lblPrioridade)
+                                        .addComponent(lblCodigo))
+                                    .addGap(4, 4, 4)
+                                    .addGroup(painelAbreChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cmbProblema, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cmbPrioridade, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGap(317, 347, Short.MAX_VALUE))))
             );
             painelAbreChmLayout.setVerticalGroup(
                 painelAbreChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(painelAbreChmLayout.createSequentialGroup()
-                    .addGap(11, 11, 11)
-                    .addComponent(lblCodigo)
-                    .addGap(3, 3, 3)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(6, 6, 6)
+                    .addGap(28, 28, 28)
+                    .addGroup(painelAbreChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblCodigo))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(painelAbreChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(painelAbreChmLayout.createSequentialGroup()
                             .addGap(3, 3, 3)
                             .addComponent(lblProblema))
                         .addComponent(cmbProblema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(1, 1, 1)
+                    .addGap(8, 8, 8)
                     .addGroup(painelAbreChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(painelAbreChmLayout.createSequentialGroup()
                             .addGap(3, 3, 3)
                             .addComponent(lblPrioridade))
                         .addComponent(cmbPrioridade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(6, 6, 6)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(lblDescricao)
-                    .addGap(6, 6, 6)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(6, 6, 6)
-                    .addComponent(lblDataAbertura)
-                    .addGap(6, 6, 6)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(painelAbreChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(painelAbreChmLayout.createSequentialGroup()
-                            .addGap(3, 3, 3)
-                            .addComponent(txtDataAbertura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(btnGravarChamado)))
+                        .addComponent(btnGravarChamado, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAbreChmLayout.createSequentialGroup()
+                            .addComponent(lblDataAbertura)
+                            .addGap(9, 9, 9)
+                            .addComponent(txtDataAbertura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap())
             );
 
             tabChamado.addTab("Abertura", painelAbreChm);
@@ -461,7 +468,7 @@ public class FrmChamado extends javax.swing.JDialog {
 
             painelFechaChm.setBackground(java.awt.Color.gray);
 
-            lblCodigoAlt.setText("Código");
+            lblCodigoAlt.setText("Código:");
 
             txtCodigoAlt.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -479,7 +486,7 @@ public class FrmChamado extends javax.swing.JDialog {
             txtDescricaoAlt.setRows(5);
             jScrollPane2.setViewportView(txtDescricaoAlt);
 
-            lblDataAberturaAlt.setText("Data Abertura");
+            lblDataAberturaAlt.setText("Abertura:");
 
             txtDataAberturaAlt.setEnabled(false);
 
@@ -493,7 +500,7 @@ public class FrmChamado extends javax.swing.JDialog {
             txtSolucao.setRows(5);
             jScrollPane3.setViewportView(txtSolucao);
 
-            lblDataRelaizado.setText("Data Realizado");
+            lblDataRelaizado.setText("Realizado:");
 
             txtDataRealizado.setEnabled(false);
 
@@ -505,70 +512,66 @@ public class FrmChamado extends javax.swing.JDialog {
 
         lblIndicarOperador.setText("Indicar Operador:");
 
-        btnAtualizar.setText("Gravar Alteração");
+        btnAtualizar.setLabel("Gravar Oerador");
 
         javax.swing.GroupLayout painelFechaChmLayout = new javax.swing.GroupLayout(painelFechaChm);
         painelFechaChm.setLayout(painelFechaChmLayout);
         painelFechaChmLayout.setHorizontalGroup(
             painelFechaChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelFechaChmLayout.createSequentialGroup()
-                .addGroup(painelFechaChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap()
+                .addGroup(painelFechaChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelFechaChmLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(lblDataAberturaAlt)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDataAberturaAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblDataRelaizado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDataRealizado, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(lblDuracao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                        .addComponent(txtTempo, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10))
+                    .addGroup(painelFechaChmLayout.createSequentialGroup()
+                        .addGroup(painelFechaChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblIndicarOperador)
+                            .addGroup(painelFechaChmLayout.createSequentialGroup()
+                                .addComponent(cmbOperador, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnAtualizar))
+                            .addComponent(lblDescricaoAlt)
+                            .addComponent(lblSolucao))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(painelFechaChmLayout.createSequentialGroup()
                         .addGroup(painelFechaChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblPrioridadeAlt)
                             .addComponent(lblProblemaAlt)
                             .addComponent(lblCodigoAlt))
                         .addGap(4, 4, 4)
                         .addGroup(painelFechaChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbProblemaAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbPrioridadeAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblTipo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(painelFechaChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(painelFechaChmLayout.createSequentialGroup()
-                            .addGap(91, 91, 91)
-                            .addComponent(txtCodigoAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(painelFechaChmLayout.createSequentialGroup()
-                            .addGap(12, 12, 12)
-                            .addGroup(painelFechaChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelFechaChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(painelFechaChmLayout.createSequentialGroup()
-                                        .addComponent(btnCancelar)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnFecharChamado))
-                                    .addGroup(painelFechaChmLayout.createSequentialGroup()
-                                        .addGroup(painelFechaChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblDataAberturaAlt)
-                                            .addComponent(txtDataAberturaAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(4, 4, 4)
-                                        .addGroup(painelFechaChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblDataRelaizado, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(painelFechaChmLayout.createSequentialGroup()
-                                                .addComponent(txtDataRealizado, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(lblDuracao)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(txtTempo, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                        .addGroup(painelFechaChmLayout.createSequentialGroup()
-                            .addGap(12, 12, 12)
-                            .addComponent(lblIndicarOperador))
-                        .addGroup(painelFechaChmLayout.createSequentialGroup()
-                            .addGap(12, 12, 12)
-                            .addComponent(cmbOperador, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(painelFechaChmLayout.createSequentialGroup()
-                            .addGap(12, 12, 12)
-                            .addComponent(lblSolucao))
-                        .addGroup(painelFechaChmLayout.createSequentialGroup()
-                            .addGap(12, 12, 12)
-                            .addComponent(lblDescricaoAlt))))
-                .addContainerGap(46, Short.MAX_VALUE))
+                            .addComponent(txtCodigoAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(painelFechaChmLayout.createSequentialGroup()
+                                .addGroup(painelFechaChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cmbProblemaAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmbPrioridadeAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblTipo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(painelFechaChmLayout.createSequentialGroup()
+                        .addGroup(painelFechaChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFechaChmLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCancelar)
+                .addGap(18, 18, 18)
+                .addComponent(btnFecharChamado)
+                .addContainerGap())
         );
         painelFechaChmLayout.setVerticalGroup(
             painelFechaChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -592,39 +595,39 @@ public class FrmChamado extends javax.swing.JDialog {
                         .addGap(3, 3, 3)
                         .addComponent(lblPrioridadeAlt))
                     .addComponent(cmbPrioridadeAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(lblDescricaoAlt)
-                .addGap(6, 6, 6)
+                .addGap(2, 2, 2)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblSolucao)
                 .addGap(6, 6, 6)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelFechaChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFechaChmLayout.createSequentialGroup()
-                        .addComponent(lblDataRelaizado)
-                        .addGap(9, 9, 9)
-                        .addComponent(txtDataRealizado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFechaChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtTempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblDuracao))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFechaChmLayout.createSequentialGroup()
-                        .addComponent(lblDataAberturaAlt)
-                        .addGap(9, 9, 9)
-                        .addComponent(txtDataAberturaAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(painelFechaChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(painelFechaChmLayout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addGroup(painelFechaChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTempo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDataAberturaAlt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDataRealizado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblDataRelaizado, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblDuracao, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(lblDataAberturaAlt))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblIndicarOperador)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
                 .addGroup(painelFechaChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbOperador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAtualizar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelFechaChmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnFecharChamado))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
+
+        lblDataRelaizado.getAccessibleContext().setAccessibleName("");
+        btnAtualizar.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout painelAlteraEquipLayout = new javax.swing.GroupLayout(painelAlteraEquip);
         painelAlteraEquip.setLayout(painelAlteraEquipLayout);
@@ -647,11 +650,11 @@ public class FrmChamado extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabChamado, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(tabChamado, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabChamado, javax.swing.GroupLayout.PREFERRED_SIZE, 550, Short.MAX_VALUE)
+            .addComponent(tabChamado, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
         );
 
         pack();
