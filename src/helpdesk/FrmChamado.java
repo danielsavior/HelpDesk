@@ -172,7 +172,7 @@ public class FrmChamado extends javax.swing.JDialog {
                         chamado.setDuracao(txtTempo.getText());
                         chamado.setDataAbertura(new SimpleDateFormat("yyyy-MM-dd").format(txtDataAbertura.getDate()));
                         if(String.valueOf(status).equals("F")){
-                            chamado.setDataRealizacao(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date(dataRealizacao)));
+                            chamado.setDataRealizacao(dataRealizacao);
                         }else{
                             chamado.setDataRealizacao(new SimpleDateFormat("yyyy-MM-dd").format(new Date("01/01/0001")));
                         }
