@@ -120,6 +120,7 @@ public class FrmEmpresa extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Empresa");
+        setResizable(false);
 
         panelEmpresaCad.setBackground(java.awt.Color.lightGray);
 

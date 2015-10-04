@@ -172,7 +172,7 @@ public class FrmConsultaEquipamentos extends javax.swing.JDialog {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Consulta de Chamados");
+        setTitle("Consulta de Equipamentos");
 
         tblEquipamentos.setModel(tb);
         jScrollPane1.setViewportView(tblEquipamentos);

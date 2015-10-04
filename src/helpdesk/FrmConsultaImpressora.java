@@ -45,10 +45,16 @@ public class FrmConsultaImpressora extends javax.swing.JDialog {
     private List<Impressora>psNovo=new ArrayList<>();
     private Usuario usuario;
     private static int qtd;
+    private FrmImpressora meInvoke;
     public FrmConsultaImpressora(Usuario u){        
         this(new Frame(),true);
         usuario=u;
         cmbSetor.setEnabled(String.valueOf(usuario.getPerfil()).equals("2")?false:true);                
+    }
+    
+    public FrmConsultaImpressora(java.awt.Frame parent, boolean modal,FrmImpressora f){
+        this(new Frame(),true);
+        meInvoke=f;
     }
     public FrmConsultaImpressora(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -64,9 +70,16 @@ public class FrmConsultaImpressora extends javax.swing.JDialog {
             public void mouseClicked(MouseEvent me) {
                 if(tblImpressoras.getRowCount()>=1){                    
                     if(me.getClickCount()==2){                        
-                        FrmImpressora f= new FrmImpressora((long)Integer.valueOf(String.valueOf(tblImpressoras.getValueAt(tblImpressoras.getSelectedRow(),0))));
-                        f.setLocation(200,100);
-                        f.show();     
+                        if(meInvoke==null){                        
+                            FrmImpressora f= new FrmImpressora((long)Integer.valueOf(String.valueOf(tblImpressoras.getValueAt(tblImpressoras.getSelectedRow(),0))));
+                            f.setLocation(200,100);
+                            f.show();     
+                        }else{
+                            FrmImpressora f=meInvoke;
+                            FrmConsultaImpressora.this.dispose();
+                            f.carregarImpressora((long)Integer.valueOf(String.valueOf(tblImpressoras.getValueAt(tblImpressoras.getSelectedRow(),0))));
+                        }
+                            
                     }
                 }
             }
@@ -163,7 +176,7 @@ public class FrmConsultaImpressora extends javax.swing.JDialog {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Consulta de Chamados");
+        setTitle("Consulta de Impressoras");
 
         tblImpressoras.setModel(tb);
         jScrollPane1.setViewportView(tblImpressoras);

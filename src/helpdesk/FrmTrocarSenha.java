@@ -95,6 +95,7 @@ public class FrmTrocarSenha extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Alteração de senha");
+        setResizable(false);
 
         panelTrocaSenha.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do usuário"));
 
@@ -136,7 +137,7 @@ public class FrmTrocarSenha extends javax.swing.JDialog {
         panelTrocaSenhaLayout.setVerticalGroup(
             panelTrocaSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTrocaSenhaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(lblNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

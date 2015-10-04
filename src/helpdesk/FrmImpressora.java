@@ -47,7 +47,7 @@ import java.util.List;
  * @author daniel
  */
 public class FrmImpressora extends javax.swing.JDialog {
-
+    private Frame meuParent;    
     class RadioButtonHandler implements ItemListener{        
         @Override
         public void itemStateChanged(ItemEvent e) {
@@ -100,12 +100,11 @@ public class FrmImpressora extends javax.swing.JDialog {
     private List<String>listaDeImpressoras;
     public FrmImpressora(long codImpressora){
         this(new Frame(),true);
-        tabImpressora.setSelectedIndex(1);
-        txtCodigoAlt.setText(String.valueOf(codImpressora));
-        buscaPorID(codImpressora);        
+        carregarImpressora(codImpressora);
     }
     public FrmImpressora(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        meuParent=parent;
         listaDeImpressoras=new ArrayList<>();
 //        for(Impressora i: new ImpressoraController().listar()){
 //            listaDeImpressoras.add(i.getModelo()+" codigo"+i.getId());
@@ -196,7 +195,11 @@ public class FrmImpressora extends javax.swing.JDialog {
                 if (ke.getKeyCode()==10){
                     //JOptionPane.showMessageDialog(null, "Você pressionou Enter");                    
                     buscaPorID(Long.valueOf(txtCodigoAlt.getText()));
-                }  
+                }else if(ke.getKeyCode()==KeyEvent.VK_F12){
+                    FrmConsultaImpressora f= new FrmConsultaImpressora(meuParent, false,FrmImpressora.this);
+                    f.setLocation(300,50);
+                    f.show();                    
+                }
             }
 
             @Override
@@ -348,6 +351,12 @@ public class FrmImpressora extends javax.swing.JDialog {
         }
     }
     //</editor-fold>
+    
+    public void carregarImpressora(long codImpressora){
+        tabImpressora.setSelectedIndex(1);
+        txtCodigoAlt.setText(String.valueOf(codImpressora));
+        buscaPorID(codImpressora);        
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
