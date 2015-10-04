@@ -73,15 +73,15 @@ public class FrmEquipamento extends javax.swing.JDialog {
     private List<String>listaDeProcessadores;
     private Integer idAlterado;
     private Frame meuParent;    
+    private FrmEquipamento me;
     public FrmEquipamento(long codEquipamento){
-        this(new Frame(),true);        
-        tabEquipamento.setSelectedIndex(1);
-        txtCodigoAlt.setText(String.valueOf(codEquipamento));
-        buscaPorID(codEquipamento);        
+        this(new Frame(),true);                        
+        carregarEquipamento(codEquipamento);
     }
     public FrmEquipamento(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         idAlterado=0;
+        me=this;
         meuParent=parent;
         tb=new PerifericoTableModel();        
         tbAlt=new PerifericoTableModel();
@@ -230,6 +230,10 @@ public class FrmEquipamento extends javax.swing.JDialog {
                     buscaPorID(Long.valueOf(txtCodigoAlt.getText()));
                     carregarPerifericos(new PerifericoController().buscarPerifericos(Long.valueOf(txtCodigoAlt.getText())));
                     ajustarTabelas();
+                }else if(ke.getKeyCode()==KeyEvent.VK_F12){                    
+                    FrmConsultaEquipamentos f= new FrmConsultaEquipamentos(meuParent, false,me);
+                    f.setLocation(300,50);
+                    f.show();                    
                 }  
             }
 
@@ -761,6 +765,13 @@ public class FrmEquipamento extends javax.swing.JDialog {
             listaDeHDDs.add(e.getHdd());
             listaDeProcessadores.add(e.getProcessador());
         }
+    }
+    public void carregarEquipamento(long codEquipamento){
+        tabEquipamento.setSelectedIndex(1);
+        txtCodigoAlt.setText(String.valueOf(codEquipamento));
+        buscaPorID(codEquipamento);
+        carregarPerifericos(new PerifericoController().buscarPerifericos(codEquipamento));
+        ajustarTabelas();
     }
     private void ajustarTabelas(){
         tablePerifericos.getTableHeader().setReorderingAllowed(false);

@@ -42,12 +42,16 @@ public class FrmConsultaEquipamentos extends javax.swing.JDialog {
     private List<Equipamento>psNovo=new ArrayList<>();
     private Usuario usuario;
     private static int qtd;
-    public FrmConsultaEquipamentos(Usuario u){
-        
+    private FrmEquipamento meInvoke;
+    public FrmConsultaEquipamentos(Usuario u){        
         this(new Frame(),true);
         usuario=u;
         cmbSetor.setEnabled(String.valueOf(usuario.getPerfil()).equals("2")?false:true);        
         
+    }
+    public FrmConsultaEquipamentos(java.awt.Frame parent, boolean modal,FrmEquipamento f){
+        this(new Frame(),true);
+        meInvoke=f;
     }
     public FrmConsultaEquipamentos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -63,9 +67,15 @@ public class FrmConsultaEquipamentos extends javax.swing.JDialog {
             public void mouseClicked(MouseEvent me) {
                 if(tblEquipamentos.getRowCount()>=1){                    
                     if(me.getClickCount()==2){                        
-                        FrmEquipamento f= new FrmEquipamento((long)Integer.valueOf(String.valueOf(tblEquipamentos.getValueAt(tblEquipamentos.getSelectedRow(),0))));
-                        f.setLocation(200,100);
-                        f.show();     
+                        if(meInvoke==null){                        
+                            FrmEquipamento f= new FrmEquipamento((long)Integer.valueOf(String.valueOf(tblEquipamentos.getValueAt(tblEquipamentos.getSelectedRow(),0))));
+                            f.setLocation(200,100);
+                            f.show();     
+                        }else{
+                            FrmEquipamento f= meInvoke;
+                            FrmConsultaEquipamentos.this.dispose();
+                            f.carregarEquipamento((long)Integer.valueOf(String.valueOf(tblEquipamentos.getValueAt(tblEquipamentos.getSelectedRow(),0))));                            
+                        }
                     }
                 }
             }
@@ -186,7 +196,7 @@ public class FrmConsultaEquipamentos extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblSetor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmbSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBuscar)
