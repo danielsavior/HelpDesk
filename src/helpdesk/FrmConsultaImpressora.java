@@ -5,43 +5,22 @@
  */
 package helpdesk;
 
-import helpdesk.beans.Chamado;
-import helpdesk.beans.Equipamento;
 import helpdesk.beans.Impressora;
 import helpdesk.beans.Setor;
 import helpdesk.beans.Usuario;
-import helpdesk.controllers.ChamadoController;
-import helpdesk.controllers.EquipamentoController;
 import helpdesk.controllers.ImpressoraController;
 import helpdesk.controllers.SetorController;
-import helpdesk.controllers.UsuarioController;
-import helpdesk.utils.ChamadoTableModel;
-import helpdesk.utils.EquipamentoTableModel;
-import helpdesk.utils.ImpressoraTableModel;
+import helpdesk.utils.TableModelGenerico;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.swing.AbstractAction;
-import javax.swing.JOptionPane;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
-/**
- *
- * @author Admin
- */
 public class FrmConsultaImpressora extends javax.swing.JDialog {
-
-    /**
-     * Creates new form FrmConsultaChamados
-     */
-    private ImpressoraTableModel tb;
+    private TableModelGenerico tb;
     private List<Impressora>psNovo=new ArrayList<>();
     private Usuario usuario;
     private static int qtd;
@@ -58,7 +37,7 @@ public class FrmConsultaImpressora extends javax.swing.JDialog {
     }
     public FrmConsultaImpressora(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        tb=new ImpressoraTableModel();             
+        tb=new TableModelGenerico(psNovo,Impressora.class);            
         initComponents();     
         carregaCombos();    
         carregarImpressoras("");
@@ -131,13 +110,13 @@ public class FrmConsultaImpressora extends javax.swing.JDialog {
     
      private void carregarImpressoras(String filtro){                   
         psNovo.clear();
-        tb=new ImpressoraTableModel();
+        tb=new TableModelGenerico(psNovo,Impressora.class);
         tblImpressoras.setModel(tb);
         tblImpressoras.repaint();    
         qtd=0;
         for(Impressora e:new ImpressoraController().buscarImpressoras(filtro)){
             psNovo.add(e);
-            tb.addImpressora(e);
+            tb.addItem(e);
             tblImpressoras.setModel(tb);
             tblImpressoras.updateUI();
             tblImpressoras.repaint();

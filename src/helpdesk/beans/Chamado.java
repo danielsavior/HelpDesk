@@ -1,18 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package helpdesk.beans;
 
+import helpdesk.utils.Coluna;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
-/**
- *
- * @author daniel
- */
 @Entity
 public class Chamado implements IHaveID{
     @Id
@@ -41,241 +34,121 @@ public class Chamado implements IHaveID{
     @Transient
     private String DescStatus;
 //<editor-fold desc="Encapsulamento de campos">
-    /**
-     * @return the id
-     */
+    @Coluna(posicao = 0,nomeColuna = "Código",get = true,retorno = Long.class)
     public long getId() {
         return id;
     }
-
-    /**
-     * @param id the id to set
-     */
+    @Coluna(posicao = 0,nomeColuna = "Código",get = false,retorno = Long.class)
     public void setId(long id) {
         this.id = id;
     }
-
-    /**
-     * @return the descricao
-     */
     public String getDescricao() {
         return descricao;
     }
-
-    /**
-     * @param descricao the descricao to set
-     */
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-
-    /**
-     * @return the problema
-     */
     public long getProblema() {
         return problema;
     }
-
-    /**
-     * @param problema the problema to set
-     */
     public void setProblema(long problema) {
         this.problema = problema;
     }
-
-    /**
-     * @return the dataAbertura
-     */
+    @Coluna(posicao = 1,nomeColuna = "Data de abertura",get = true,retorno = String.class)
     public String getDataAbertura() {
         return dataAbertura;
     }
-
-    /**
-     * @param dataAbertura the dataAbertura to set
-     */
+    @Coluna(posicao = 1,nomeColuna = "Data de abertura",get = false,retorno = String.class)
     public void setDataAbertura(String dataAbertura) {
         this.dataAbertura = dataAbertura;
     }
-
-    /**
-     * @return the dataRealizacao
-     */
     public String getDataRealizacao() {
         return dataRealizacao;
     }
-
-    /**
-     * @param dataRealizacao the dataRealizacao to set
-     */
     public void setDataRealizacao(String dataRealizacao) {
         this.dataRealizacao = dataRealizacao;
     }
-
-    /**
-     * @return the prioridade
-     */
     public int getPrioridade() {
         return prioridade;
     }
-
-    /**
-     * @param prioridade the prioridade to set
-     */
     public void setPrioridade(int prioridade) {
         this.prioridade = prioridade;
     }
-
-    /**
-     * @return the operador
-     */
     public String getOperador() {
         return operador;
     }
-
-    /**
-     * @param operador the operador to set
-     */
     public void setOperador(String operador) {
         this.operador = operador;
     }
-
-    /**
-     * @return the solucao
-     */
     public String getSolucao() {
         return solucao;
     }
-
-    /**
-     * @param solucao the solucao to set
-     */
     public void setSolucao(String solucao) {
         this.solucao = solucao;
     }
-
-    /**
-     * @return the tipo
-     */
     public String getTipo() {
         return tipo;
     }
-
-    /**
-     * @param tipo the tipo to set
-     */
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-
-    /**
-     * @return the duracao
-     */
     public String getDuracao() {
         return duracao;
     }
-
-    /**
-     * @param duracao the duracao to set
-     */
     public void setDuracao(String duracao) {
         this.duracao = duracao;
     }
-
-    /**
-     * @return the status
-     */
     public char getStatus() {
         return status;
     }
-
-    /**
-     * @param status the status to set
-     */
     public void setStatus(char status) {
         this.status = status;
-    }
-    
-    /**
-     * @return the usuario
-     */
+    }   
     public long getUsuario() {
         return usuario;
     }
-
-    /**
-     * @param usuario the usuario to set
-     */
     public void setUsuario(long usuario) {
         this.usuario = usuario;
     }
     //</editor-fold>
 
-    /**
-     * @return the nomeUsuario
-     */
+    @Coluna(posicao = 2,nomeColuna = "Usuário",get = true,retorno = String.class)
     public String getNomeUsuario() {
         return nomeUsuario;
     }
-
-    /**
-     * @param nomeUsuario the nomeUsuario to set
-     */
+    @Coluna(posicao = 2,nomeColuna = "Usuário",get = false,retorno = String.class)
     public void setNomeUsuario(String nomeUsuario) {
         this.nomeUsuario = nomeUsuario;
     }
-
-    /**
-     * @return the DescSetor
-     */
+    @Coluna(posicao = 3,nomeColuna = "Setor",get = true,retorno = String.class)
     public String getDescSetor() {
         return DescSetor;
     }
-
-    /**
-     * @param DescSetor the DescSetor to set
-     */
+    @Coluna(posicao = 3,nomeColuna = "Usuário",get = false,retorno = String.class)
     public void setDescSetor(String DescSetor) {
         this.DescSetor = DescSetor;
     }
-
-    /**
-     * @return the DescProblema
-     */
+    @Coluna(posicao = 4,nomeColuna = "Problema",get = true,retorno = String.class)
     public String getDescProblema() {
         return DescProblema;
     }
-
-    /**
-     * @param DescProblema the DescProblema to set
-     */
+    @Coluna(posicao = 4,nomeColuna = "Problema",get = false,retorno = String.class)
     public void setDescProblema(String DescProblema) {
         this.DescProblema = DescProblema;
     }
-
-    /**
-     * @return the DescPrioridade
-     */
+    @Coluna(posicao = 5,nomeColuna = "Prioridade",get = true,retorno = String.class)
     public String getDescPrioridade() {
         return DescPrioridade;
     }
-
-    /**
-     * @param DescPrioridade the DescPrioridade to set
-     */
+    @Coluna(posicao = 5,nomeColuna = "Prioridade",get = false,retorno = String.class)
     public void setDescPrioridade(String DescPrioridade) {
         this.DescPrioridade = DescPrioridade;
     }
-
-    /**
-     * @return the DescStatus
-     */
+    @Coluna(posicao = 6,nomeColuna = "Status",get = true,retorno = String.class)
     public String getDescStatus() {
         return DescStatus;
     }
-
-    /**
-     * @param DescStatus the DescStatus to set
-     */
+    @Coluna(posicao = 6,nomeColuna = "Status",get = false,retorno = String.class)
     public void setDescStatus(String DescStatus) {
         this.DescStatus = DescStatus;
     }

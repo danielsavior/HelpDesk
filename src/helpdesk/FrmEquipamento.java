@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package helpdesk;
 
 
@@ -9,12 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
-import java.util.Scanner;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -25,7 +15,6 @@ import helpdesk.beans.Office;
 import helpdesk.beans.Periferico;
 import helpdesk.beans.Setor;
 import helpdesk.beans.SistemaOP;
-import helpdesk.beans.Usuario;
 import helpdesk.controllers.EquipamentoController;
 import helpdesk.controllers.FornecedorController;
 import helpdesk.controllers.MarcaController;
@@ -35,11 +24,11 @@ import helpdesk.controllers.SetorController;
 import helpdesk.controllers.SistemaOPController;
 import helpdesk.utils.AutoCompleteTextField;
 import helpdesk.utils.PerifericoTableModel;
+import helpdesk.utils.TableModelGenerico;
 import helpdesk.utils.Utilidades;
 import java.awt.Frame;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -48,20 +37,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import javax.swing.JComboBox;
 import javax.swing.JTable;
 
-/**
- *
- * @author daniel
- */
 public class FrmEquipamento extends javax.swing.JDialog {
-
-    /**
-     * Creates new form FrmConfig
-     */
-    private PerifericoTableModel tb;
-    private PerifericoTableModel tbAlt;
+    private TableModelGenerico tb;
+    private TableModelGenerico tbAlt;
     private List<Periferico>psNovo=new ArrayList();
     private List<Periferico>psEdicao=new ArrayList();
     private Set<Long>setInativar=new HashSet();
@@ -83,8 +63,8 @@ public class FrmEquipamento extends javax.swing.JDialog {
         idAlterado=0;
         me=this;
         meuParent=parent;
-        tb=new PerifericoTableModel();        
-        tbAlt=new PerifericoTableModel();
+        tb = new TableModelGenerico(psNovo,Periferico.class);             
+        tbAlt = new TableModelGenerico(psEdicao,Periferico.class);             
         listaDeEquipamentos=new ArrayList<>();
         listaDeMemorias=new ArrayList<>();
         listaDeHDDs=new ArrayList<>();
@@ -388,14 +368,14 @@ public class FrmEquipamento extends javax.swing.JDialog {
                         int resposta=0;
                         resposta=JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esse item?");
                         if(resposta==0){    
-                            Periferico p=(Periferico)tbAlt.getPeriferico(tablePerifericosAlt.getSelectedRow(), tablePerifericosAlt.getSelectedColumn());
+                            Periferico p=(Periferico)tbAlt.getItem(tablePerifericosAlt.getSelectedRow(), tablePerifericosAlt.getSelectedColumn());
                             removerPeriferico(p, psEdicao, tablePerifericosAlt, tbAlt);
                             cmbTipoPerifericoAlt.setEnabled(true);
                             txtDescricaoPerifericoAlt.setText("");
                             txtNSeriePerifericoAlt.setText("");
                         }
                     }else{                    
-                        Periferico p=(Periferico)tbAlt.getPeriferico(tablePerifericosAlt.getSelectedRow(), tablePerifericosAlt.getSelectedColumn());
+                        Periferico p=(Periferico)tbAlt.getItem(tablePerifericosAlt.getSelectedRow(), tablePerifericosAlt.getSelectedColumn());
                         idAlterado=Integer.valueOf(String.valueOf(p.getId()));
                         txtDescricaoPerifericoAlt.setText(p.getDescricao());
                         txtNSeriePerifericoAlt.setText(p.getNumeroSerie());
@@ -444,14 +424,14 @@ public class FrmEquipamento extends javax.swing.JDialog {
                         int resposta=0;
                         resposta=JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esse item?");
                         if(resposta==0){                        
-                            Periferico p=(Periferico)tb.getPeriferico(tablePerifericos.getSelectedRow(), tablePerifericos.getSelectedColumn());
+                            Periferico p=(Periferico)tb.getItem(tablePerifericos.getSelectedRow(), tablePerifericos.getSelectedColumn());
                             removerPeriferico(p, psNovo, tablePerifericos, tb);
                             cmbTipoPeriferico.setEnabled(true);
                             txtDescricaoPeriferico.setText("");
                             txtNSeriePeriferico.setText("");
                         }
                     }else{                    
-                        Periferico p=(Periferico)tb.getPeriferico(tablePerifericos.getSelectedRow(), tablePerifericos.getSelectedColumn());
+                        Periferico p=(Periferico)tb.getItem(tablePerifericos.getSelectedRow(), tablePerifericos.getSelectedColumn());
                         idAlterado=Integer.valueOf(String.valueOf(p.getId()));
                         txtDescricaoPeriferico.setText(p.getDescricao());
                         txtNSeriePeriferico.setText(p.getNumeroSerie());
@@ -570,8 +550,8 @@ public class FrmEquipamento extends javax.swing.JDialog {
         txtNomeEquipamentoAlt.setText("");
         txtNomeUsuarioAlt.setText("");
         
-        tbAlt=new PerifericoTableModel();
         psEdicao.clear();
+        tbAlt=new TableModelGenerico(psEdicao,Periferico.class);             
         setInativar.clear();
         listaIncluir.clear();
         mapAlterar.clear();
@@ -596,8 +576,8 @@ public class FrmEquipamento extends javax.swing.JDialog {
         txtProcessador.setText("");
         txtNomeEquipamento.setText("");
         txtNomeUsuario.setText("");
-        tb=new PerifericoTableModel();
         psNovo.clear();                 
+        tb=new TableModelGenerico(psNovo,Periferico.class);             
         tablePerifericos.setModel(tb);
         tablePerifericos.updateUI();
         tablePerifericos.repaint(); 
@@ -677,14 +657,14 @@ public class FrmEquipamento extends javax.swing.JDialog {
     }
     private void carregarPerifericos(List<Periferico>perifericos){
         psEdicao.clear();
-        tbAlt=new PerifericoTableModel();
+        tbAlt=new TableModelGenerico(psEdicao,Periferico.class);             
         tablePerifericosAlt.setModel(tb);
         tablePerifericosAlt.repaint();        
         for(Periferico p:perifericos){
             adicionarPeriferico(p, psEdicao, tablePerifericosAlt, tbAlt,false,false);
         }
     }    
-    private boolean adicionarPeriferico(Periferico p,List<Periferico> ps,JTable tabela, PerifericoTableModel tbMeu, boolean checarN,boolean opAlteracao){
+    private boolean adicionarPeriferico(Periferico p,List<Periferico> ps,JTable tabela, TableModelGenerico tbMeu, boolean checarN,boolean opAlteracao){
         boolean incluir;
         incluir=true;
         try{
@@ -712,7 +692,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
                         listaIncluir.add(p);                    
                     }
                     ps.add(p);
-                    tbMeu.addPeriferico(p);
+                    tbMeu.addItem(p);
                     tabela.setModel(tbMeu);
                     tabela.updateUI();
                     tabela.repaint();                                        
@@ -727,7 +707,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
                         tbMeu.remove(pe);
                         pe.setDescricao(p.getDescricao());
                         pe.setNumeroSerie(p.getNumeroSerie());
-                        tbMeu.addPeriferico(pe);
+                        tbMeu.addItem(pe);
                         tabela.setModel(tbMeu);
                         tabela.updateUI();
                         tabela.repaint();                                        
@@ -746,7 +726,7 @@ public class FrmEquipamento extends javax.swing.JDialog {
         return true;
         
     }    
-    private void removerPeriferico(Periferico p,List<Periferico> ps,JTable tabela, PerifericoTableModel tbMeu){
+    private void removerPeriferico(Periferico p,List<Periferico> ps,JTable tabela, TableModelGenerico tbMeu){
         if(p.getId()>0){
             setInativar.add(p.getId());
         }

@@ -4,6 +4,7 @@
  */
 package helpdesk.beans;
 
+import helpdesk.utils.Coluna;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -29,125 +30,71 @@ public class Impressora implements IHaveID{
     private String nomeMarca;
     @Transient         
     private String nomeSetor;
-    //<editor-fold desc="Encapsulamento de campos">
-    /**
-     * @return the id
-     */
+    //<editor-fold desc="Encapsulamento de campos">    
+    @Coluna(posicao=0,nomeColuna = "Código",get = true,retorno = Long.class)
     public long getId() {
         return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
+    }    
+    @Coluna(posicao=0,nomeColuna = "Código",get = false,retorno = String.class)
     public void setId(long id) {
         this.id = id;
     }
-
-    /**
-     * @return the descricao
-     */
+    @Coluna(posicao=1,nomeColuna = "Modelo",get = true,retorno = String.class)
     public String getModelo() {
         return modelo;
-    }
-    /**
-     * @param descricao the descricao to set
-     */
+    }        
+    @Coluna(posicao=1,nomeColuna = "Modelo",get = false,retorno = String.class)
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }    
+    @Coluna(posicao=4, nomeColuna = "IP",get = true,retorno = String.class)
     public String getIp() {
         return ip;
-    }
-
-    /**
-     * @param ip the ip to set
-     */
+    }    
+    @Coluna(posicao=4, nomeColuna = "IP",get = false, retorno = String.class)
     public void setIp(String ip) {
         this.ip = ip;
-    }
-
-    /**
-     * @return the marca
-     */
+    }    
     public long getMarca() {
         return marca;
     }
-
-    /**
-     * @param marca the marca to set
-     */
     public void setMarca(long marca) {
         this.marca = marca;
-    }
+    }        
     
-    /**
-     * @return the setor
-     */
     public long getSetor() {
         return setor;
     }
-
-    /**
-     * @param setor the setor to set
-     */
     public void setSetor(long setor) {
-        this.setor = setor;
+        this.setor = setor;        
     }
-    //</editor-fold>
-
-    /**
-     * @return the nomeMarca
-     */
+    @Coluna(posicao=5,nomeColuna = "Marca",get = true, retorno = String.class)
     public String getNomeMarca() {
         return nomeMarca;
-    }
-
-    /**
-     * @param nomeMarca the nomeMarca to set
-     */
+    }   
+    @Coluna(posicao=5,nomeColuna = "Marca",get = false, retorno = String.class)
     public void setNomeMarca(String nomeMarca) {
         this.nomeMarca = nomeMarca;
     }
-
-    /**
-     * @return the nomeSetor
-     */
+    @Coluna(posicao=6,nomeColuna = "Setor",get = true,retorno = String.class)
     public String getNomeSetor() {
         return nomeSetor;
-    }
-
-    /**
-     * @param nomeSetor the nomeSetor to set
-     */
+    }    
+    @Coluna(posicao=6,nomeColuna = "Setor",get = false,retorno = String.class)
     public void setNomeSetor(String nomeSetor) {
         this.nomeSetor = nomeSetor;
     }
-
-    /**
-     * @return the patrimonio
-     */
     public String getPatrimonio() {
         return patrimonio;
     }
-
-    /**
-     * @param patrimonio the patrimonio to set
-     */
     public void setPatrimonio(String patrimonio) {
         this.patrimonio = patrimonio;
     }
-
-    /**
-     * @return the modo
-     */
+    @Coluna(posicao=2,nomeColuna = "Modo",get = true,retorno = String.class)
     public String getModo() {
         return modo;
-    }
-
-    /**
-     * @param modo the modo to set
-     */
+    }       
+    @Coluna(posicao=2,nomeColuna = "Modo",get = false,retorno = String.class)
     public void setModo(int modo) {    
         switch(modo){
             case 1:
@@ -160,17 +107,11 @@ public class Impressora implements IHaveID{
                 this.modo="USB";                                   
         }
     }
-
-    /**
-     * @return the compartilhada
-     */
+    @Coluna(posicao=3,nomeColuna = "Compartilhada",get = true,retorno = String.class)
     public String getCompartilhada() {
         return compartilhada;
-    }
-
-    /**
-     * @param compartilhada the compartilhada to set
-     */
+    }    
+    @Coluna(posicao=3,nomeColuna = "Compartilhada",get = false,retorno = String.class)
     public void setCompartilhada(int compartilhada) {        
         switch(compartilhada){
             case 1:
@@ -183,5 +124,7 @@ public class Impressora implements IHaveID{
                 this.compartilhada = "Não";                                
         }
     }
+    //</editor-fold>    
+    
 
 }

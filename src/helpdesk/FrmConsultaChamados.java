@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package helpdesk;
 
 import helpdesk.beans.Chamado;
@@ -12,30 +7,20 @@ import helpdesk.controllers.ChamadoController;
 import helpdesk.controllers.SetorController;
 import helpdesk.controllers.UsuarioController;
 import helpdesk.utils.ChamadoTableModel;
+import helpdesk.utils.TableModelGenerico;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.swing.AbstractAction;
 import javax.swing.JOptionPane;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
-/**
- *
- * @author Admin
- */
 public class FrmConsultaChamados extends javax.swing.JDialog {
-
-    /**
-     * Creates new form FrmConsultaChamados
-     */
-    private ChamadoTableModel tb;
+    
+    private TableModelGenerico tb;
     private List<Chamado>psNovo=new ArrayList<>();
     private Usuario usuario;
     
@@ -49,7 +34,7 @@ public class FrmConsultaChamados extends javax.swing.JDialog {
     }
     public FrmConsultaChamados(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        tb=new ChamadoTableModel();             
+        tb=new TableModelGenerico(psNovo,Chamado.class);             
         initComponents();        
         tblChamados.getTableHeader().setReorderingAllowed(false);        
         
@@ -182,15 +167,13 @@ public class FrmConsultaChamados extends javax.swing.JDialog {
     
      private void carregaChamados(){                   
         psNovo.clear();
-        tb=new ChamadoTableModel();
+        tb=new TableModelGenerico(psNovo,Chamado.class);
         tblChamados.setModel(tb);
-        tblChamados.repaint();
-        //itensAdicionadosEdicao.clear();
-        //lblTotalAlt.setText("0");
+        tblChamados.repaint();        
         if(String.valueOf(usuario.getPerfil()).equals("2")){
             for(Chamado c:new ChamadoController().buscarChamados(usuario.getIdsetor())){
                 psNovo.add(c);
-                tb.addChamado(c);
+                tb.addItem(c);
                 tblChamados.setModel(tb);
                 tblChamados.updateUI();
                 tblChamados.repaint();
@@ -198,7 +181,7 @@ public class FrmConsultaChamados extends javax.swing.JDialog {
         }else{
             for(Chamado c:new ChamadoController().buscarChamados(0)){
                 psNovo.add(c);
-                tb.addChamado(c);
+                tb.addItem(c);
                 tblChamados.setModel(tb);
                 tblChamados.updateUI();
                 tblChamados.repaint();
@@ -208,14 +191,14 @@ public class FrmConsultaChamados extends javax.swing.JDialog {
      }
      private void carregaChamadosComFiltro(List<Chamado> chamados){
         psNovo.clear();
-        tb=new ChamadoTableModel();
+        tb=new TableModelGenerico(psNovo,Chamado.class);
         tblChamados.setModel(tb);
         tblChamados.repaint();
         //itensAdicionadosEdicao.clear();
         //lblTotalAlt.setText("0");
         for(Chamado c:chamados){
             psNovo.add(c);
-            tb.addChamado(c);
+            tb.addItem(c);
             tblChamados.setModel(tb);
             tblChamados.updateUI();
             tblChamados.repaint();

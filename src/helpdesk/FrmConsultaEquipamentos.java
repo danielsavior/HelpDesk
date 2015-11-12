@@ -1,44 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package helpdesk;
-
-import helpdesk.beans.Chamado;
 import helpdesk.beans.Equipamento;
 import helpdesk.beans.Setor;
 import helpdesk.beans.Usuario;
-import helpdesk.controllers.ChamadoController;
 import helpdesk.controllers.EquipamentoController;
 import helpdesk.controllers.SetorController;
-import helpdesk.controllers.UsuarioController;
-import helpdesk.utils.ChamadoTableModel;
-import helpdesk.utils.EquipamentoTableModel;
+import helpdesk.utils.TableModelGenerico;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.swing.AbstractAction;
-import javax.swing.JOptionPane;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
-/**
- *
- * @author Admin
- */
 public class FrmConsultaEquipamentos extends javax.swing.JDialog {
-
-    /**
-     * Creates new form FrmConsultaChamados
-     */
-    private EquipamentoTableModel tb;
+    
+    private TableModelGenerico tb;
     private List<Equipamento>psNovo=new ArrayList<>();
     private Usuario usuario;
     private static int qtd;
@@ -55,7 +32,7 @@ public class FrmConsultaEquipamentos extends javax.swing.JDialog {
     }
     public FrmConsultaEquipamentos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        tb=new EquipamentoTableModel();             
+        tb=new TableModelGenerico(psNovo,Equipamento.class);             
         initComponents();     
         carregaCombos();    
         carregaEquipamentos("");
@@ -127,13 +104,13 @@ public class FrmConsultaEquipamentos extends javax.swing.JDialog {
     
      private void carregaEquipamentos(String filtro){                   
         psNovo.clear();
-        tb=new EquipamentoTableModel();
+        tb=new TableModelGenerico(psNovo,Equipamento.class);
         tblEquipamentos.setModel(tb);
         tblEquipamentos.repaint();    
         qtd=0;
         for(Equipamento e:new EquipamentoController().buscarEquipamentos(filtro)){
             psNovo.add(e);
-            tb.addChamado(e);
+            tb.addItem(e);
             tblEquipamentos.setModel(tb);
             tblEquipamentos.updateUI();
             tblEquipamentos.repaint();
